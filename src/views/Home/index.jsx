@@ -57,7 +57,7 @@ const Home = memo(() => {
 
     return (
         <Layout>
-            <CommonHeader community={community} onCommunityChange={onCommunityChange} />
+            <CommonHeader community={community} onCommunityChange={onCommunityChange} selectedKeys={['/home']} />
             <Layout>
                 <Sider
                     width={200}

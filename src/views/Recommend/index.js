@@ -15,7 +15,7 @@ const Recommend = () => {
     const authCtx = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
     const [recommendInfo, setRecommendInfo] = useState([]);
-    const [community, setCommunity] = useState('2');
+    const [community, setCommunity] = useState('1');
 
     useEffect(() => {
         async function fetchRecommend() {
@@ -45,7 +45,7 @@ const Recommend = () => {
 
     return (
         <div className="bg">
-            <CommonHeader community={community} onCommunityChange={onCommunityChange} />
+            <CommonHeader community={community} onCommunityChange={onCommunityChange} selectedKeys={['/recommend']} />
             <Card className="detail-card-wrapper">
                 <div className="r-header">猜你喜欢</div>
                 <RecommendList jumpToDetail={jumpToDetail} recommendInfo={recommendInfo} loading={loading} />

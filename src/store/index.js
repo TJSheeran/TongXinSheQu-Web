@@ -1,10 +1,12 @@
-import LoginReducer from "./login";
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
+import LoginReducer from './login';
+import HeaderReducer from './header';
 
 const store = configureStore({
-	reducer: {
-		login: LoginReducer,
-	},
+    reducer: {
+        login: LoginReducer,
+        header: HeaderReducer
+    }
 });
 
 export default store;
