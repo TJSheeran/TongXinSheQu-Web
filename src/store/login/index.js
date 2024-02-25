@@ -1,11 +1,11 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { getUserInfo } from '@/services'
+import { getUserInfo } from '@/services';
 
-export const fetchUserInfo = createAsyncThunk("fetchUserInfo", async payload => {
-    const res = await getUserInfo(payload)
-    return res.user
-})
+export const fetchUserInfo = createAsyncThunk('fetchUserInfo', async (payload) => {
+    const res = await getUserInfo(payload);
+    return res.user;
+});
 
 const LoginSlice = createSlice({
     name: 'testa',
@@ -14,20 +14,21 @@ const LoginSlice = createSlice({
     },
     reducers: {
         changeUserInfo(state, { payload }) {
-            state.userInfo = payload
+            state.userInfo = payload;
         }
     },
-    extraReducers: builder => {
-        builder.addCase(fetchUserInfo.fulfilled, (state, { payload }) => {
-                    //request success todo
-                    state.userInfo = payload
-                })
-                .addCase(fetchUserInfo.rejected, () => {
-                    //request failed todo
-                    console.log("request rejected")
-                })
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchUserInfo.fulfilled, (state, { payload }) => {
+                //request success todo
+                state.userInfo = payload;
+            })
+            .addCase(fetchUserInfo.rejected, () => {
+                //request failed todo
+                console.log('request rejected');
+            });
     }
-})
+});
 
 export const { changeUserInfo } = LoginSlice.actions;
 

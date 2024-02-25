@@ -69,11 +69,10 @@ const Home = memo(() => {
                     alignItems: 'center'
                 }}
             >
-                {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} items={navItems} className="header-menu" /> */}
                 <Menu
                     theme="dark"
                     mode="horizontal"
-                    defaultSelectedKeys={['1']}
+                    defaultSelectedKeys={['/home']}
                     items={navItems}
                     className="header-menu"
                     onClick={onNavMenuClick}
@@ -94,7 +93,6 @@ const Home = memo(() => {
                         handleCancel={() => setIsShowDetail(false)}
                         onChangeRefresh={() => {
                             setIsRefresh(!isRefresh);
-                            console.log(666);
                         }}
                     />
                 </Modal>
