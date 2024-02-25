@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Flex, Spin } from 'antd';
 import { ContentCard } from '../ContentCard';
-import { catalogKey2Label } from './constant';
+import { catalogKey2Label } from '@/constant';
 
 import './index.less';
 

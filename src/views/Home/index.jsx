@@ -1,7 +1,7 @@
 import React, { memo, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Layout, Menu, theme, Select, Card, Modal } from 'antd';
-import { navItems, catalogList, communityOptions, catalogKey2Label, latAndLong } from './constant';
+import { navItems, catalogList, communityOptions, catalogKey2Label, latAndLong } from '@/constant';
 import { ContentList } from './components/ContentList';
 import { CaixiList } from './components/CaixiList';
 import { useContext } from 'react';

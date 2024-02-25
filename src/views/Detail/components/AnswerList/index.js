@@ -1,7 +1,7 @@
 import { Divider } from 'antd';
 import React, { Component } from 'react';
 import { AnswerCard } from '../AnswerCard';
-import { answersList } from './constant';
+import { answersList } from '@/constant';
 
 import './index.less';
 

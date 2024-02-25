@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Input, Select, Modal, Popconfirm, Form, Button, message } from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { communityOptions, latAndLong } from '../../constant';
+import { communityOptions, latAndLong } from '@/constant';
 import { useContext } from 'react';
 import AuthContext from '../../../../services/context/AuthContext';
 import { publish } from '../../../../services/utils/api';

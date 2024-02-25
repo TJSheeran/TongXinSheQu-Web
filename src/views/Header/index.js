@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Layout, Menu, Select, Button, Modal, Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import AuthContext from '../../services/context/AuthContext';
-import { navItems, latAndLong, communityOptions } from './constant';
+import { navItems, latAndLong, communityOptions } from '@/constant';
 import PublishModal from './components/PublishModal';
 
 const { Header } = Layout;
