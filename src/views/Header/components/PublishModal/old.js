@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Input, Select, message, Upload, Form } from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { communityOptions, latAndLong } from '../../constant';
+import { communityOptions, latAndLong } from '../../../Home/constant';
 
 import './index.less';
 
