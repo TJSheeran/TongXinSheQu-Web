@@ -1,5 +1,5 @@
-import React, { memo } from 'react'
-import { CoffeeOutlined, CustomerServiceOutlined, LaptopOutlined, FlagOutlined, PayCircleOutlined, TeamOutlined, TagsOutlined } from '@ant-design/icons'
+import React, { memo } from 'react';
+import { CoffeeOutlined, CustomerServiceOutlined, LaptopOutlined, FlagOutlined, PayCircleOutlined, TeamOutlined, TagsOutlined } from '@ant-design/icons';
 
 export const navItems = [
     {
@@ -12,11 +12,13 @@ export const navItems = [
     },
     {
         key: '/message',
-        label: '消息'
+        label: '消息',
+        disabled: true
     },
     {
         key: '/personal',
-        label: '个人主页'
+        label: '个人主页',
+        disabled: true
     }
 ];
 
@@ -209,12 +211,11 @@ export const catalogList = [
 ];
 
 export const catalogKey2Label = {
-    '1': '社区服务',
-    '2': '交通出行',
-    '3': '团购',
-    '4': '美食',
-    '5': '休闲',
-    '6': '二手',
-    '7': '组队',
+    1: '社区服务',
+    2: '交通出行',
+    3: '团购',
+    4: '美食',
+    5: '休闲',
+    6: '二手',
+    7: '组队'
 };
-

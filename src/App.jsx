@@ -1,10 +1,25 @@
-import React, { memo } from "react";
+import React, { memo } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Home from '@/views/Home';
+import Login from '@/views/Login';
+import Recommend from '@/views/Recommend';
+import Detail from '@/views/Detail';
 
-import routes from "@/router";
-import { useRoutes } from "react-router-dom";
+// import routes from "@/router";
+// import { useRoutes } from "react-router-dom";
 
-const App = memo(() => {
-	return <div>{useRoutes(routes)}</div>;
-});
+const App = () => {
+    const isAuthenticated = localStorage.getItem('token') === 'undefined' ? false : true; // 从localStorage取值判定是否登录
+    console.log(isAuthenticated);
+    return (
+        <Routes>
+            <Route path="/" element={isAuthenticated ? <Navigate to="/home" /> : <Navigate to="/login" />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/recommend" element={<Recommend />} />
+            <Route path="/detail" element={<Detail />} />
+        </Routes>
+    );
+};
 
 export default App;
