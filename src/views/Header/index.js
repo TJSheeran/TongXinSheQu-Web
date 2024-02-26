@@ -1,12 +1,15 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Layout, Menu, Select, Button, Modal, Avatar } from 'antd';
+import { Layout, Menu, Select, Button, Modal, Avatar, Popover } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import store from '@/store';
 import { changeNavItem, changeCommunity } from '@/store/header';
 import { useSelector, useDispatch } from 'react-redux';
 import { navItems, latAndLong, communityOptions } from '@/constant';
 import PublishModal from './components/PublishModal';
+import PopoverContent from './components/PopoverContent';
+
+import './index.less';
 
 const { Header } = Layout;
 
@@ -25,6 +28,10 @@ const CommonHeader = () => {
 
     const onCommunityChange = (value) => {
         dispatch(changeCommunity(value));
+    };
+
+    const renderPopoverContent = () => {
+        return <PopoverContent />;
     };
 
     return (
@@ -47,8 +54,12 @@ const CommonHeader = () => {
                     }}
                 />
             </Modal>
-            <Avatar className="tab-user-avatar" icon={<UserOutlined />} src={userState.picture} />
-            <div className="user-name">{userState.username}</div>
+            <Popover content={renderPopoverContent()} style={{ width: 300 }}>
+                <div className="user-wrapper">
+                    <Avatar className="tab-user-avatar" icon={<UserOutlined />} src={userState.picture} />
+                    <div className="user-name">{userState.username}</div>
+                </div>
+            </Popover>
         </Header>
     );
 };
