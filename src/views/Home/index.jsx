@@ -16,17 +16,17 @@ const { Header, Content, Sider } = Layout;
 const Home = memo(() => {
     const navigate = useNavigate();
     const userState = useSelector((state) => state.login.user);
+    const { selectedCommunity } = useSelector((state) => state.header);
     const [catalog, setCatalog] = useState('1');
     const [listData, setListData] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [community, setCommunity] = useState('1');
 
     useEffect(() => {
         async function fetchListData() {
             setLoading(true);
             const params = {
                 category1: catalogKey2Label[catalog],
-                campus: latAndLong[community]
+                campus: latAndLong[selectedCommunity]
             };
             const result = await getList(params);
             if (result) {
@@ -36,12 +36,8 @@ const Home = memo(() => {
             console.log('帖子列表', result);
         }
         fetchListData();
-    }, [catalog, community]);
-
-    const onCommunityChange = (value) => {
-        console.log('community', latAndLong[community]);
-        setCommunity(value);
-    };
+        console.log('selectedCommunity', selectedCommunity);
+    }, [catalog, selectedCommunity]);
 
     const jumpToDetail = (info) => {
         navigate('/detail', { state: { info } });
@@ -57,7 +53,7 @@ const Home = memo(() => {
 
     return (
         <Layout>
-            <CommonHeader community={community} onCommunityChange={onCommunityChange} selectedKeys={['/home']} />
+            <CommonHeader />
             <Layout>
                 <Sider
                     width={200}
