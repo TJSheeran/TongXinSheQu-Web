@@ -17,7 +17,7 @@ export class RecommendList extends Component {
         ) : (
             <div>
                 {recommendInfo.map((itemInfo) => {
-                    return <RecommendCard info={itemInfo} jumpToDetail={jumpToDetail} />;
+                    return <RecommendCard info={itemInfo} key={itemInfo.id} jumpToDetail={jumpToDetail} />;
                 })}
             </div>
         );

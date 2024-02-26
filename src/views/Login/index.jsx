@@ -17,8 +17,6 @@ const Login = memo(() => {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
 
-    console.log('Login页面的token', token);
-
     const onAccountChange = (e) => {
         setAccount(e.target.value);
     };

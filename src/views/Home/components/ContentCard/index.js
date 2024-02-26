@@ -1,26 +1,17 @@
-import React, { Component } from 'react'
-import { EditOutlined, EllipsisOutlined, SettingOutlined, UserOutlined, StarFilled, StarOutlined } from '@ant-design/icons'
-import { Avatar, Card } from 'antd'
+import React, { Component } from 'react';
+import { EditOutlined, EllipsisOutlined, SettingOutlined, UserOutlined, StarFilled, StarOutlined } from '@ant-design/icons';
+import { Avatar, Card } from 'antd';
 
-import './index.less'
+import './index.less';
 
-const { Meta } = Card
+const { Meta } = Card;
 
 export class ContentCard extends Component {
-    
     render() {
-        const { info, jumpToDetail } = this.props
+        const { info, jumpToDetail } = this.props;
         return (
             <div>
-                <Card
-                    className="card-wrapper"
-                    // cover={<img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />}
-                    // actions={[<SettingOutlined key="setting" />, <EditOutlined key="edit" />, <EllipsisOutlined key="ellipsis" />]}
-                    hoverable="true"
-                    extra={info.isCollected ? <StarFilled className="collect-btn-true" /> : <StarOutlined className="collect-btn-false" />}
-                    title={info.title}
-                    onClick={() => jumpToDetail(info)}
-                >
+                <Card className="card-wrapper" hoverable="true" extra={info.isCollected ? <StarFilled className="collect-btn-true" /> : <StarOutlined className="collect-btn-false" />} title={info.title} onClick={() => jumpToDetail(info)}>
                     <div className="info-wrapper">
                         <div className="user-info">
                             <Avatar className="user-avatar" src={info.baikeAuthorPic} />
@@ -37,6 +28,6 @@ export class ContentCard extends Component {
                     </div>
                 </Card>
             </div>
-        )
+        );
     }
 }
