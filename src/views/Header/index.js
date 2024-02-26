@@ -2,7 +2,8 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Layout, Menu, Select, Button, Modal, Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import AuthContext from '../../services/context/AuthContext';
+import store from '@/store';
+import { useSelector } from 'react-redux';
 import { navItems, latAndLong, communityOptions } from '@/constant';
 import PublishModal from './components/PublishModal';
 
@@ -10,10 +11,11 @@ const { Header } = Layout;
 
 const CommonHeader = ({ community, onCommunityChange, selectedKeys }) => {
     const navigate = useNavigate();
-    const authCtx = useContext(AuthContext);
+    const userState = useSelector((state) => state.login.user);
     const [isShowPublish, setIsShowDetail] = useState(false);
     const [isRefresh, setIsRefresh] = useState(false);
 
+    console.log('userState', userState);
     const onNavMenuClick = (e) => {
         navigate(e.key);
     };
@@ -37,8 +39,8 @@ const CommonHeader = ({ community, onCommunityChange, selectedKeys }) => {
                     }}
                 />
             </Modal>
-            <Avatar className="tab-user-avatar" icon={<UserOutlined />} src={authCtx.userPicUrl} />
-            <div className="user-name">{authCtx.username}</div>
+            <Avatar className="tab-user-avatar" icon={<UserOutlined />} src={userState.picture} />
+            <div className="user-name">{userState.username}</div>
         </Header>
     );
 };

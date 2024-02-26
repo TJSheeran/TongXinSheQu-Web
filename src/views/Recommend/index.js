@@ -1,18 +1,18 @@
 import { Card, Avatar, Button } from 'antd';
 import React, { memo, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
 import { getRecommend } from '../../services/utils/api';
-import AuthContext from '../../services/context/AuthContext';
 import { RecommendList } from './components/RecommendList';
 import CommonHeader from '@/views/Header';
 import { latAndLong } from '@/constant';
+import store from '@/store';
+import { useSelector } from 'react-redux';
 
 import './index.less';
 
 const Recommend = () => {
     const navigate = useNavigate();
-    const authCtx = useContext(AuthContext);
+    const userState = useSelector((state) => state.login.user);
     const [loading, setLoading] = useState(false);
     const [recommendInfo, setRecommendInfo] = useState([]);
     const [community, setCommunity] = useState('1');
@@ -21,7 +21,7 @@ const Recommend = () => {
         async function fetchRecommend() {
             setLoading(true);
             const params = {
-                userid: authCtx.uid,
+                userid: userState.uid,
                 location: '121.21416,31.286012'
             };
             const result = await getRecommend(params);

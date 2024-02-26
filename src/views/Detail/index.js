@@ -4,14 +4,14 @@ import { useLocation } from 'react-router-dom';
 import { AnswerList } from './components/AnswerList';
 import { AICard } from './components/AICard';
 import { getDetail } from '../../services/utils/api';
-import { useContext } from 'react';
-import AuthContext from '../../services/context/AuthContext';
+import { useSelector } from 'react-redux';
+import store from '@/store';
 
 import './index.less';
 
 const Detail = memo(() => {
-    const authCtx = useContext(AuthContext);
     const { state } = useLocation();
+    const userState = useSelector((store) => store.login.user);
     const { info } = state;
     const { id, baikeAuthorPic } = info;
     const [isFocused, setIsFocused] = useState(info.isFocused);
@@ -26,7 +26,7 @@ const Detail = memo(() => {
         async function fetchDetail() {
             setLoading(true);
             const params = {
-                userid: authCtx.uid,
+                userid: userState.uid,
                 tieziid: id
             };
             const result = await getDetail(params);

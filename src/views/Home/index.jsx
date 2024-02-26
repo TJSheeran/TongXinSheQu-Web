@@ -4,9 +4,9 @@ import { Button, Layout, Menu, theme, Select, Card, Modal } from 'antd';
 import { navItems, catalogList, communityOptions, catalogKey2Label, latAndLong } from '@/constant';
 import { ContentList } from './components/ContentList';
 import { CaixiList } from './components/CaixiList';
-import { useContext } from 'react';
-import AuthContext from '../../services/context/AuthContext';
-import CommonHeader from '../Header'
+import store from '@/store';
+import { useSelector } from 'react-redux';
+import CommonHeader from '../Header';
 
 import './style.less';
 import { getList } from '@/services/utils/api';
@@ -15,7 +15,7 @@ const { Header, Content, Sider } = Layout;
 
 const Home = memo(() => {
     const navigate = useNavigate();
-    const authCtx = useContext(AuthContext);
+    const userState = useSelector((state) => state.login.user);
     const [catalog, setCatalog] = useState('1');
     const [listData, setListData] = useState([]);
     const [loading, setLoading] = useState(false);

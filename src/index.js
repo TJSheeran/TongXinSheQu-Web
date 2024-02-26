@@ -8,15 +8,15 @@ import { HashRouter } from 'react-router-dom';
 import Loading from './views/loading';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
-import store from './store';
-import AuthContext, { AuthContextProvider } from './services/context/AuthContext';
+// import AuthContext, { AuthContextProvider } from './services/context/AuthContext';
+import store from '@/store';
 import { ConfigProvider } from 'antd';
 import { defaultConfig } from '@/config';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Suspense fallback={<Loading />}>
-        <AuthContextProvider>
+        <Provider store={store}>
             <HashRouter>
                 <ConfigProvider
                     theme={{
@@ -35,6 +35,6 @@ root.render(
                     <App />
                 </ConfigProvider>
             </HashRouter>
-        </AuthContextProvider>
+        </Provider>
     </Suspense>
 );

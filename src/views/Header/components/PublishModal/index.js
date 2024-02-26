@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Input, Select, Modal, Popconfirm, Form, Button, message } from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { communityOptions, latAndLong } from '@/constant';
-import { useContext } from 'react';
-import AuthContext from '../../../../services/context/AuthContext';
+import store from '@/store';
+import { useSelector } from 'react-redux';
 import { publish } from '../../../../services/utils/api';
 
 import './index.less';
@@ -12,8 +12,7 @@ const { TextArea } = Input;
 
 const PublishModal = (props) => {
     const { handleCancel, onChangeRefresh } = props;
-    console.log(props);
-    const authCtx = useContext(AuthContext);
+    const userState = useSelector((state) => state.login.user);
     const [form] = Form.useForm();
     const normFile = (e) => {
         if (Array.isArray(e)) {
@@ -30,7 +29,7 @@ const PublishModal = (props) => {
         values = {
             ...values,
             campus: latAndLong[values.campus],
-            uid: authCtx.uid
+            uid: userState.uid
         };
 
         Modal.confirm({

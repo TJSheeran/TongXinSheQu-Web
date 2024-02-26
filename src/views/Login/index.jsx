@@ -3,15 +3,21 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import React, { memo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '@/services/utils/api';
-import { useContext } from 'react';
-import AuthContext from '../../services/context/AuthContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { fetchUserLogin } from '@/store/login';
 import './style.less';
+import store from '@/store';
 
 const Login = memo(() => {
     const navigate = useNavigate();
+    const { token } = useSelector((state) => state.login);
+    const loginDispatch = useDispatch();
     const [account, setAccount] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
+
+    console.log('Login页面的token', token);
 
     const onAccountChange = (e) => {
         setAccount(e.target.value);
@@ -21,34 +27,25 @@ const Login = memo(() => {
         setPassword(e.target.value);
     };
 
-    // async function fetchLogin() {
-    //     setLoading(true);
-    //     const params = {
-    //         username: account,
-    //         password: password
-    //     };
-    //     const result = await login(params);
-    //     if (result.info === '登录成功') {
-    //         // navigate('/home');
-    //         console.log(result);
-    //         message.success('登录成功');
-    //         setLoading(false);
-    //     } else {
-    //         message.error(result.info);
-    //     }
-    //     console.log('result', result);
-    // }
-
-    const authCtx = useContext(AuthContext);
     const submitHandler = () => {
         setLoading(true);
         const params = {
             username: account,
             password: password
         };
-        authCtx.onLogin(params, () => {
-            navigate('/home');
-        });
+        loginDispatch(fetchUserLogin(params))
+            .then(unwrapResult)
+            .then((data) => {
+                if (data.info === '登录成功') {
+                    message.success('登录成功');
+                    navigate('/home');
+                } else {
+                    message.warning(data.info);
+                }
+            })
+            .catch((err) => {
+                message.error('登录出错');
+            });
         setLoading(false);
     };
 

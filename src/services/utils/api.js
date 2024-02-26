@@ -24,7 +24,7 @@ export async function getList(params) {
     return post('https://tongxinshequ.cn/findbaikeFromDemo', params);
 }
 
-export async function login(params) {
+export async function userLogin(params) {
     // return post('https://mock.apifox.com/m1/885299-0-default/getAllCardList', params);
     // return post('https://tongxinshequ.cn/findbaikeFromDemo', params);
     return post('https://tongxinshequ.cn/login', params);
