@@ -13,6 +13,7 @@ import './index.less';
 const Recommend = () => {
     const navigate = useNavigate();
     const userState = useSelector((state) => state.login.user);
+    const { selectedCommunity } = useSelector((state) => state.header);
     const [loading, setLoading] = useState(false);
     const [recommendInfo, setRecommendInfo] = useState([]);
 
@@ -21,7 +22,7 @@ const Recommend = () => {
             setLoading(true);
             const params = {
                 userid: userState.uid,
-                location: '121.21416,31.286012'
+                location: latAndLong[selectedCommunity]
             };
             const result = await getRecommend(params);
             if (result) {
@@ -31,7 +32,7 @@ const Recommend = () => {
             console.log('详情页', result);
         }
         fetchRecommend();
-    }, []);
+    }, selectedCommunity);
 
     const jumpToDetail = (info) => {
         navigate('/detail', { state: { info } });
