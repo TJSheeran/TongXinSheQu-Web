@@ -30,6 +30,12 @@ export async function userLogin(params) {
     return post('https://tongxinshequ.cn/login', params);
 }
 
+export async function userRegister(params) {
+    // return post('https://mock.apifox.com/m1/885299-0-default/getAllCardList', params);
+    // return post('https://tongxinshequ.cn/findbaikeFromDemo', params);
+    return post('https://tongxinshequ.cn/register', params);
+}
+
 export async function publish(params) {
     // return post('https://mock.apifox.com/m1/885299-0-default/getAllCardList', params);
     // return post('https://tongxinshequ.cn/findbaikeFromDemo', params);

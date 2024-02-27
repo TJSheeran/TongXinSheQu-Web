@@ -2,7 +2,6 @@ import { Button, Input, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import React, { memo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login } from '@/services/utils/api';
 import { useSelector, useDispatch } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { fetchUserLogin } from '@/store/login';
@@ -26,6 +25,14 @@ const Login = memo(() => {
     };
 
     const submitHandler = () => {
+        if (!account) {
+            message.warning('请输入用户名');
+            return;
+        }
+        if (!password) {
+            message.warning('请输入密码');
+            return;
+        }
         setLoading(true);
         const params = {
             username: account,
@@ -38,7 +45,7 @@ const Login = memo(() => {
                     message.success('登录成功');
                     navigate('/home');
                 } else {
-                    message.warning(data.info);
+                    message.error(data.info);
                 }
             })
             .catch((err) => {
@@ -64,7 +71,7 @@ const Login = memo(() => {
                     <span
                         className="register"
                         onClick={() => {
-                            console.log('注册页');
+                            navigate('/register');
                         }}
                     >
                         去注册
