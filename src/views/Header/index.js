@@ -13,13 +13,12 @@ import './index.less';
 
 const { Header } = Layout;
 
-const CommonHeader = () => {
+const CommonHeader = ({ handleRefresh }) => {
     const navigate = useNavigate();
     const userState = useSelector((state) => state.login.user);
     const { selectedNav, selectedCommunity } = useSelector((state) => state.header);
     const dispatch = useDispatch();
     const [isShowPublish, setIsShowDetail] = useState(false);
-    const [isRefresh, setIsRefresh] = useState(false);
     const [showPopover, setShowPopover] = useState(false);
 
     const closePopover = () => {
@@ -58,9 +57,7 @@ const CommonHeader = () => {
             <Modal open={isShowPublish} onCancel={() => setIsShowDetail(false)} footer={null} width={700}>
                 <PublishModal
                     handleCancel={() => setIsShowDetail(false)}
-                    onChangeRefresh={() => {
-                        setIsRefresh(!isRefresh);
-                    }}
+                    handleRefresh={handleRefresh}
                 />
             </Modal>
             <Popover content={renderPopoverContent()} style={{ width: 300 }} open={showPopover} onOpenChange={openPopover} trigger="hover">

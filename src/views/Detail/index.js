@@ -1,4 +1,5 @@
-import { Card, Avatar, Divider, Button } from 'antd';
+import { Card, Avatar, Divider, Button, FloatButton, Modal } from 'antd';
+import { CommentOutlined, EditOutlined, PlusOutlined, HeartOutlined, StarOutlined } from '@ant-design/icons';
 import React, { memo, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AnswerList } from './components/AnswerList';
@@ -6,6 +7,7 @@ import { AICard } from './components/AICard';
 import { getDetail } from '../../services/utils/api';
 import { useSelector } from 'react-redux';
 import store from '@/store';
+import AnswerModal from './components/AnswerModal';
 
 import './index.less';
 
@@ -21,6 +23,8 @@ const Detail = memo(() => {
     const [isFollowed, setIsFollowed] = useState(false);
     const [answerList, setAnswerList] = useState([]);
     const [AIInfo, setAIInfo] = useState('');
+    const [isShowAnswerModal, setIsShowAnswerModal] = useState(false);
+    const [isRefresh, setIsRefresh] = useState(false);
 
     useEffect(() => {
         async function fetchDetail() {
@@ -41,7 +45,7 @@ const Detail = memo(() => {
             console.log('AIInfo', AIInfo);
         }
         fetchDetail();
-    }, []);
+    }, [isRefresh]);
 
     const renderFocusButton = () => {
         return (
@@ -82,6 +86,21 @@ const Detail = memo(() => {
                 {AIInfo && <AICard AIInfo={AIInfo} />}
                 <AnswerList answerList={answerList} />
             </Card>
+            <Modal open={isShowAnswerModal} onCancel={() => setIsShowAnswerModal(false)} footer={null} width={700}>
+                <AnswerModal handleCancel={() => setIsShowAnswerModal(false)} tieziid={id} handleRefresh={() => setIsRefresh(!isRefresh)} />
+            </Modal>
+            <FloatButton.Group
+                trigger="hover"
+                type="primary"
+                style={{
+                    right: 24
+                }}
+                icon={<PlusOutlined />}
+            >
+                <FloatButton icon={<HeartOutlined />} tooltip={<div>喜欢</div>} />
+                <FloatButton icon={<EditOutlined />} tooltip={<div>添加回答</div>} onClick={() => setIsShowAnswerModal(true)} />
+                <FloatButton icon={<StarOutlined />} tooltip={<div>收藏</div>} />
+            </FloatButton.Group>
         </div>
     );
 });

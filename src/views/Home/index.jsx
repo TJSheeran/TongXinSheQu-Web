@@ -20,6 +20,7 @@ const Home = memo(() => {
     const [catalog, setCatalog] = useState('1');
     const [listData, setListData] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [isRefresh, setIsRefresh] = useState(false);
 
     useEffect(() => {
         async function fetchListData() {
@@ -37,7 +38,7 @@ const Home = memo(() => {
         }
         fetchListData();
         console.log('selectedCommunity', selectedCommunity);
-    }, [catalog, selectedCommunity]);
+    }, [catalog, selectedCommunity, isRefresh]);
 
     const jumpToDetail = (info) => {
         navigate('/detail', { state: { info } });
@@ -53,7 +54,11 @@ const Home = memo(() => {
 
     return (
         <Layout>
-            <CommonHeader />
+            <CommonHeader
+                handleRefresh={() => {
+                    setIsRefresh(!isRefresh);
+                }}
+            />
             <Layout>
                 <Sider
                     width={200}

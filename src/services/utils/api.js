@@ -52,3 +52,8 @@ export async function getDetail(params) {
 export async function getRecommend(params) {
     return post('https://tongxinshequ.cn/recommendforWeb', params);
 }
+
+export async function fetchAnswer(params) {
+    return post('https://tongxinshequ.cn/add_comment', params);
+}
+

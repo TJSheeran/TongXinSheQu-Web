@@ -16,6 +16,7 @@ const Recommend = () => {
     const { selectedCommunity } = useSelector((state) => state.header);
     const [loading, setLoading] = useState(false);
     const [recommendInfo, setRecommendInfo] = useState([]);
+    const [isRefresh, setIsRefresh] = useState(false);
 
     useEffect(() => {
         async function fetchRecommend() {
@@ -32,7 +33,7 @@ const Recommend = () => {
             console.log('详情页', result);
         }
         fetchRecommend();
-    }, selectedCommunity);
+    }, [selectedCommunity, isRefresh]);
 
     const jumpToDetail = (info) => {
         navigate('/detail', { state: { info } });
@@ -40,7 +41,11 @@ const Recommend = () => {
 
     return (
         <div>
-            <CommonHeader />
+            <CommonHeader
+                handleRefresh={() => {
+                    setIsRefresh(!isRefresh);
+                }}
+            />
             <Card className="detail-card-wrapper">
                 <div className="r-header">猜你喜欢</div>
                 {loading ? (
