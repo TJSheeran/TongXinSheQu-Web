@@ -1,4 +1,4 @@
-import { Card, Avatar, Button, Spin } from 'antd';
+import { Card, Avatar, Button, Spin, FloatButton } from 'antd';
 import React, { memo, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getRecommend } from '../../services/utils/api';
@@ -58,6 +58,7 @@ const Recommend = () => {
                     <RecommendList jumpToDetail={jumpToDetail} recommendInfo={recommendInfo} />
                 )}
             </Card>
+            <FloatButton.BackTop tooltip='返回顶部' />
         </div>
     );
 };

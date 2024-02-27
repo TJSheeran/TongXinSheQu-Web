@@ -1,6 +1,6 @@
 import React, { memo, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Layout, Menu, theme, Select, Card, Modal } from 'antd';
+import { Button, Layout, Menu, theme, Select, Card, Modal, FloatButton } from 'antd';
 import { navItems, catalogList, communityOptions, catalogKey2Label, latAndLong } from '@/constant';
 import { ContentList } from './components/ContentList';
 import { CaixiList } from './components/CaixiList';
@@ -99,6 +99,7 @@ const Home = memo(() => {
                         </Card>
                     </Content>
                 </Layout>
+                <FloatButton.BackTop tooltip="返回顶部" />
             </Layout>
         </Layout>
     );

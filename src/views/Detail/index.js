@@ -1,10 +1,10 @@
-import { Card, Avatar, Divider, Button, FloatButton, Modal } from 'antd';
-import { CommentOutlined, EditOutlined, PlusOutlined, HeartOutlined, StarOutlined } from '@ant-design/icons';
+import { Card, Avatar, Divider, Button, FloatButton, Modal, message } from 'antd';
+import { CommentOutlined, EditOutlined, PlusOutlined, HeartFilled, HeartOutlined, StarFilled, StarOutlined } from '@ant-design/icons';
 import React, { memo, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AnswerList } from './components/AnswerList';
 import { AICard } from './components/AICard';
-import { getDetail } from '../../services/utils/api';
+import { getDetail, fetchAddLike, fetchDeleteLike, fetchAddCollect, fetchDeleteCollect, fetchAddFollow, fetchDeleteFollow } from '@/services/utils/api';
 import { useSelector } from 'react-redux';
 import store from '@/store';
 import AnswerModal from './components/AnswerModal';
@@ -21,6 +21,8 @@ const Detail = memo(() => {
     const [detailInfo, setDetailInfo] = useState([]);
     const [isCollected, setIsCollected] = useState(false);
     const [isFollowed, setIsFollowed] = useState(false);
+    const [isLiked, setIsLiked] = useState(false);
+    const [likeNum, setLikeNum] = useState(undefined);
     const [answerList, setAnswerList] = useState([]);
     const [AIInfo, setAIInfo] = useState('');
     const [isShowAnswerModal, setIsShowAnswerModal] = useState(false);
@@ -34,29 +36,121 @@ const Detail = memo(() => {
                 tieziid: id
             };
             const result = await getDetail(params);
+            console.log('详情页请求结果', result);
             if (result) {
                 setDetailInfo(result);
                 setIsCollected(result[0].iscollected);
                 setIsFollowed(result[0].isfollowed);
+                setIsLiked(result[0].isliked);
+                setLikeNum(result[0].likenum);
                 setAnswerList(result[0].commentList);
                 setAIInfo(result[0].airesult);
                 setLoading(false);
             }
-            console.log('AIInfo', AIInfo);
         }
         fetchDetail();
-    }, [isRefresh]);
+    }, [isRefresh, isLiked, isCollected]);
+
+    const handleAddLike = async () => {
+        const params = {
+            userid: userState.uid,
+            tieziid: id
+        };
+        const res = await fetchAddLike(params);
+        console.log('点赞结果', res);
+        if (res.code === '200') {
+            setIsLiked(true);
+            message.success(res.info);
+        } else {
+            message.error('服务出错了');
+        }
+    };
+
+    const handleDeleteLike = async () => {
+        const params = {
+            userid: userState.uid,
+            tieziid: id
+        };
+        const res = await fetchDeleteLike(params);
+        console.log('取消点赞结果', res);
+        if (res.code === '200') {
+            setIsLiked(false);
+            message.warning(res.info);
+        } else {
+            message.error('服务出错了');
+        }
+    };
+
+    const handleAddCollect = async () => {
+        const params = {
+            userid: userState.uid,
+            tieziid: id
+        };
+        const res = await fetchAddCollect(params);
+        console.log('收藏结果', res);
+        if (res.code === '200') {
+            setIsCollected(true);
+            message.success(res.info);
+        } else {
+            message.error('服务出错了');
+        }
+    };
+
+    const handleDeleteCollect = async () => {
+        const params = {
+            userid: userState.uid,
+            tieziid: id
+        };
+        const res = await fetchDeleteCollect(params);
+        console.log('取消收藏结果', res);
+        if (res.code === '200') {
+            setIsCollected(false);
+            message.warning(res.info);
+        } else {
+            message.error('服务出错了');
+        }
+    };
+
+    const handleAddFollow = async () => {
+        const params = {
+            userid: userState.uid,
+            tieziid: id
+        };
+        const res = await fetchAddFollow(params);
+        console.log('关注结果', res);
+        if (res.code === '200') {
+            setIsCollected(true);
+            message.success(res.info);
+        } else {
+            message.error('服务出错了');
+        }
+    };
+
+    const handleDeleteFollow = async () => {
+        const params = {
+            userid: userState.uid,
+            tieziid: id
+        };
+        const res = await fetchDeleteFollow(params);
+        console.log('取消关注结果', res);
+        if (res.code === '200') {
+            setIsCollected(false);
+            message.warning(res.info);
+        } else {
+            message.error('服务出错了');
+        }
+    };
 
     const renderFocusButton = () => {
         return (
             <div>
                 {isFollowed ? (
-                    <Button type="primary" shape="round" className="isFocusedBtn" onClick={() => setIsFollowed(!isFollowed)}>
-                        已关注
+                    <Button type="primary" shape="round" className="isFocusedBtn" onClick={handleDeleteFollow}>
+                        已关注作者
                     </Button>
                 ) : (
-                    <Button type="primary" shape="round" className="isNotFocusedBtn" onClick={() => setIsFollowed(!isFollowed)} ghost>
-                        + 关注
+                    <Button type="primary" shape="round" className="isNotFocusedBtn" onClick={handleAddFollow} ghost>
+                        + 关注作者
                     </Button>
                 )}
             </div>
@@ -90,16 +184,17 @@ const Detail = memo(() => {
                 <AnswerModal handleCancel={() => setIsShowAnswerModal(false)} tieziid={id} handleRefresh={() => setIsRefresh(!isRefresh)} />
             </Modal>
             <FloatButton.Group
-                trigger="hover"
+                // trigger="hover"
                 type="primary"
                 style={{
                     right: 24
                 }}
-                icon={<PlusOutlined />}
+                // icon={<PlusOutlined />}
             >
-                <FloatButton icon={<HeartOutlined />} tooltip={<div>喜欢</div>} />
+                <FloatButton onClick={isLiked ? handleDeleteLike : handleAddLike} icon={isLiked ? <HeartFilled style={{ color: '#ec5b56' }} /> : <HeartOutlined />} tooltip={<div>{isLiked ? '已喜欢' : '喜欢'}</div>} badge={{ count: likeNum }} />
+                <FloatButton onClick={isCollected ? handleDeleteCollect : handleAddCollect} icon={isCollected ? <StarFilled style={{ color: '#fcd732' }} /> : <StarOutlined />} tooltip={<div>{isLiked ? '已收藏' : '收藏'}</div>} />
                 <FloatButton icon={<EditOutlined />} tooltip={<div>添加回答</div>} onClick={() => setIsShowAnswerModal(true)} />
-                <FloatButton icon={<StarOutlined />} tooltip={<div>收藏</div>} />
+                <FloatButton.BackTop tooltip='返回顶部' />
             </FloatButton.Group>
         </div>
     );

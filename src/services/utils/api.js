@@ -57,3 +57,28 @@ export async function fetchAnswer(params) {
     return post('https://tongxinshequ.cn/add_comment', params);
 }
 
+export async function fetchAddLike(params) {
+    return post('https://tongxinshequ.cn/addlike', params);
+}
+
+export async function fetchDeleteLike(params) {
+    return post('https://tongxinshequ.cn/delectlike', params);
+}
+
+export async function fetchAddCollect(params) {
+    return post('https://tongxinshequ.cn/addcollect', params);
+}
+
+export async function fetchDeleteCollect(params) {
+    return post('https://tongxinshequ.cn/delectcollect', params);
+}
+
+export async function fetchAddFollow(params) {
+    return post('https://tongxinshequ.cn/follow', params);
+}
+
+export async function fetchDeleteFollow(params) {
+    return post('https://tongxinshequ.cn/delectfollow', params);
+}
+
+
