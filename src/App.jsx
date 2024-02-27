@@ -9,8 +9,9 @@ import Detail from '@/views/Detail';
 // import { useRoutes } from "react-router-dom";
 
 const App = () => {
-    const isAuthenticated = localStorage.getItem('token') === 'undefined' ? false : true; // 从localStorage取值判定是否登录
-    console.log(isAuthenticated);
+    // 从localStorage取值判定是否登录
+    const token = localStorage.getItem('token');
+    const isAuthenticated = token && token !== 'undefined' ? true : false;
     return (
         <Routes>
             <Route path="/" element={isAuthenticated ? <Navigate to="/home" /> : <Navigate to="/login" />} />
