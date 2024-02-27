@@ -30,7 +30,7 @@ const PopoverContent = ({ closePopover }) => {
             onOk: () => {
                 localStorage.removeItem('token');
                 localStorage.removeItem('user');
-                navigate('/login');
+                navigate('/login', { replace: true });
             }
         });
     };

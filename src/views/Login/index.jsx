@@ -43,7 +43,7 @@ const Login = memo(() => {
             .then((data) => {
                 if (data.info === '登录成功') {
                     message.success('登录成功');
-                    navigate('/home');
+                    navigate('/home', { replace: true });
                 } else {
                     message.error(data.info);
                 }
