@@ -20,6 +20,15 @@ const CommonHeader = () => {
     const dispatch = useDispatch();
     const [isShowPublish, setIsShowDetail] = useState(false);
     const [isRefresh, setIsRefresh] = useState(false);
+    const [showPopover, setShowPopover] = useState(false);
+
+    const closePopover = () => {
+        setShowPopover(false);
+    };
+
+    const openPopover = (newOpen) => {
+        setShowPopover(newOpen);
+    };
 
     const onNavMenuClick = (e) => {
         dispatch(changeNavItem(e.key));
@@ -31,7 +40,7 @@ const CommonHeader = () => {
     };
 
     const renderPopoverContent = () => {
-        return <PopoverContent />;
+        return <PopoverContent closePopover={closePopover} />;
     };
 
     return (
@@ -54,7 +63,7 @@ const CommonHeader = () => {
                     }}
                 />
             </Modal>
-            <Popover content={renderPopoverContent()} style={{ width: 300 }}>
+            <Popover content={renderPopoverContent()} style={{ width: 300 }} open={showPopover} onOpenChange={openPopover} trigger="hover">
                 <div className="user-wrapper">
                     <Avatar className="tab-user-avatar" icon={<UserOutlined />} src={userState.picture} />
                     <div className="user-name">{userState.username}</div>

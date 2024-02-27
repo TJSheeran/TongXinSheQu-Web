@@ -1,12 +1,21 @@
-import { Avatar, Divider } from 'antd';
+import React, { useState } from 'react';
+import { Avatar, Divider, Button, Drawer } from 'antd';
 import { useSelector } from 'react-redux';
-
-import React from 'react';
 
 import './index.less';
 
-const PopoverContent = () => {
+const PopoverContent = ({ closePopover }) => {
     const userState = useSelector((state) => state.login.user);
+    const [showDrawer, setShowDrawer] = useState(false);
+
+    const openDrawer = () => {
+        setShowDrawer(true);
+        closePopover();
+    };
+
+    const onClose = () => {
+        setShowDrawer(false);
+    };
 
     return (
         <div className="popover-content-body">
@@ -15,9 +24,16 @@ const PopoverContent = () => {
             </div>
             <div className="popover-content-username-wrapper">{userState.username}</div>
             <div className="popover-content-handler-wrapper">
-                <div className="popover-content-handler">个人主页</div>
-                <div className="popover-content-handler">修改信息</div>
-                <div className="popover-content-handler">退出登录</div>
+                <Button disabled type="text" className="popover-content-handler">
+                    个人主页
+                </Button>
+                <Button type="text" className="popover-content-handler" onClick={openDrawer}>
+                    修改信息
+                </Button>
+                <Button type="text" className="popover-content-handler">
+                    退出登录
+                </Button>
+                <Drawer title="修改个人信息" placement="left" closable={true} onClose={onClose} open={showDrawer}></Drawer>
             </div>
         </div>
     );
