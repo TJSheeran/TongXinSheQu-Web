@@ -49,7 +49,7 @@ const Detail = memo(() => {
             }
         }
         fetchDetail();
-    }, [isRefresh, isLiked, isCollected]);
+    }, [isRefresh, isLiked, isCollected, isFollowed]);
 
     const handleAddLike = async () => {
         const params = {
@@ -119,7 +119,7 @@ const Detail = memo(() => {
         const res = await fetchAddFollow(params);
         console.log('关注结果', res);
         if (res.code === '200') {
-            setIsCollected(true);
+            setIsFollowed(true);
             message.success(res.info);
         } else {
             message.error('服务出错了');
@@ -134,7 +134,7 @@ const Detail = memo(() => {
         const res = await fetchDeleteFollow(params);
         console.log('取消关注结果', res);
         if (res.code === '200') {
-            setIsCollected(false);
+            setIsFollowed(false);
             message.warning(res.info);
         } else {
             message.error('服务出错了');
@@ -194,7 +194,7 @@ const Detail = memo(() => {
                 <FloatButton onClick={isLiked ? handleDeleteLike : handleAddLike} icon={isLiked ? <HeartFilled style={{ color: '#ec5b56' }} /> : <HeartOutlined />} tooltip={<div>{isLiked ? '已喜欢' : '喜欢'}</div>} badge={{ count: likeNum }} />
                 <FloatButton onClick={isCollected ? handleDeleteCollect : handleAddCollect} icon={isCollected ? <StarFilled style={{ color: '#fcd732' }} /> : <StarOutlined />} tooltip={<div>{isLiked ? '已收藏' : '收藏'}</div>} />
                 <FloatButton icon={<EditOutlined />} tooltip={<div>添加回答</div>} onClick={() => setIsShowAnswerModal(true)} />
-                <FloatButton.BackTop tooltip='返回顶部' />
+                <FloatButton.BackTop tooltip="返回顶部" />
             </FloatButton.Group>
         </div>
     );
