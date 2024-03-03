@@ -21,7 +21,7 @@ const LoginSlice = createSlice({
                 const userParams = {
                     uid: payload.uid || undefined,
                     username: payload.username || '',
-                    picture: payload.picture || 'https://tongxinshequ.cn/87601e9b1a734c9f9f17803d87074218.jpg',
+                    picture: payload.picture || '',
                     password: payload.password || '',
                     nickname: payload.nickname || ''
                 };

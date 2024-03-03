@@ -27,7 +27,7 @@ export class RecommendCard extends Component {
                 >
                     <div className="r-info-wrapper">
                         <div className="r-user-info">
-                            <Avatar className="r-user-avatar" src={newInfo.baikeAuthorPic} />
+                            <Avatar className="r-user-avatar" src={newInfo.baikeAuthorPic || 'https://tongxinshequ.cn/87601e9b1a734c9f9f17803d87074218.jpg'} />
                             <div>
                                 <div className="r-user-name">{newInfo.author}</div>
                                 <div className="r-publish-time">{newInfo.createtime.slice(0, 11)}</div>

@@ -60,7 +60,7 @@ const CommonHeader = ({ handleRefresh }) => {
                 </Modal>
                 <Popover content={renderPopoverContent()} style={{ width: 300 }} open={showPopover} onOpenChange={openPopover} trigger="hover">
                     <div className="user-wrapper">
-                        <Avatar className="tab-user-avatar" icon={<UserOutlined />} src={userState.picture} />
+                        <Avatar className="tab-user-avatar" icon={<UserOutlined />} src={userState.picture || 'https://tongxinshequ.cn/87601e9b1a734c9f9f17803d87074218.jpg'} />
                         <div className="user-name">{userState.username}</div>
                     </div>
                 </Popover>

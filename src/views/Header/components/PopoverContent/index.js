@@ -38,7 +38,7 @@ const PopoverContent = ({ closePopover }) => {
     return (
         <div className="popover-content-body">
             <div className="popover-content-avatar-wrapper">
-                <Avatar className="popover-content-avatar" src={userState.picture}></Avatar>
+                <Avatar className="popover-content-avatar" src={userState.picture || 'https://tongxinshequ.cn/87601e9b1a734c9f9f17803d87074218.jpg'}></Avatar>
             </div>
             <div className="popover-content-username-wrapper">{userState.username}</div>
             <div className="popover-content-handler-wrapper">

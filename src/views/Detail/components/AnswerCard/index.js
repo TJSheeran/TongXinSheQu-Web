@@ -11,7 +11,7 @@ export class AnswerCard extends Component {
                 <Divider />
                 <div className="ans-info-wrapper">
                     <div className="ans-user-info">
-                        <Avatar className="ans-user-avatar" src={info.commnetauthorpic} />
+                        <Avatar className="ans-user-avatar" src={info.commnetauthorpic || 'https://tongxinshequ.cn/87601e9b1a734c9f9f17803d87074218.jpg'} />
                         <div className="ans-right-block">
                             <div className="ans-user-name">{info.author}</div>
                             <div className="ans-ip-location">IP属地 · {info.ipLoaction ? info.ipLoaction : '上海'}</div>

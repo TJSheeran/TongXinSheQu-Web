@@ -165,7 +165,7 @@ const Detail = memo(() => {
                 </div>
                 <div className="info-wrapper">
                     <div className="user-info">
-                        <Avatar className="user-avatar" src={info.baikeAuthorPic} />
+                        <Avatar className="user-avatar" src={info.baikeAuthorPic || 'https://tongxinshequ.cn/87601e9b1a734c9f9f17803d87074218.jpg'} />
                         <div className="right-block">
                             <div className="user-name">{info.author}</div>
                             <div className="ip-location">IP属地 · 嘉定区</div>
@@ -192,7 +192,7 @@ const Detail = memo(() => {
                 // icon={<PlusOutlined />}
             >
                 <FloatButton onClick={isLiked ? handleDeleteLike : handleAddLike} icon={isLiked ? <HeartFilled style={{ color: '#ec5b56' }} /> : <HeartOutlined />} tooltip={<div>{isLiked ? '已喜欢' : '喜欢'}</div>} badge={{ count: likeNum }} />
-                <FloatButton onClick={isCollected ? handleDeleteCollect : handleAddCollect} icon={isCollected ? <StarFilled style={{ color: '#fcd732' }} /> : <StarOutlined />} tooltip={<div>{isLiked ? '已收藏' : '收藏'}</div>} />
+                <FloatButton onClick={isCollected ? handleDeleteCollect : handleAddCollect} icon={isCollected ? <StarFilled style={{ color: '#fcd732' }} /> : <StarOutlined />} tooltip={<div>{isCollected ? '已收藏' : '收藏'}</div>} />
                 <FloatButton icon={<EditOutlined />} tooltip={<div>添加回答</div>} onClick={() => setIsShowAnswerModal(true)} />
                 <FloatButton.BackTop tooltip="返回顶部" />
             </FloatButton.Group>
