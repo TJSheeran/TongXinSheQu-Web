@@ -42,7 +42,8 @@ const PublishModal = (props) => {
                 const res = await publish(values);
                 console.log('返回值', res);
                 if (res.code === '200') {
-                    message.success('发布成功');
+                    const resCategory = res.data.category1 || '';
+                    message.success(resCategory ? `发布成功，您的帖子已被AI归类到 ${resCategory} 目录下` : '发布成功');
                     onReset();
                     handleCancel();
                     handleRefresh();

@@ -14,7 +14,7 @@ export class ContentCard extends Component {
                 <Card className="card-wrapper" hoverable="true" extra={info.isCollected ? <StarFilled className="collect-btn-true" /> : <StarOutlined className="collect-btn-false" />} title={info.title} onClick={() => jumpToDetail(info)}>
                     <div className="info-wrapper">
                         <div className="user-info">
-                            <Avatar className="user-avatar" src={info.baikeAuthorPic} />
+                            <Avatar className="user-avatar" src={info.baikeAuthorPic || 'https://tongxinshequ.cn/87601e9b1a734c9f9f17803d87074218.jpg'} />
                             <div>
                                 <div className="user-name">{info.author}</div>
                                 <div className="publish-time">{info.createtime.slice(0, 11)}</div>

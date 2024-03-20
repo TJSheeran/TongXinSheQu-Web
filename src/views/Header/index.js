@@ -51,23 +51,22 @@ const CommonHeader = ({ handleRefresh }) => {
                 alignItems: 'center'
             }}
         >
-            <Menu theme="dark" mode="horizontal" selectedKeys={selectedNav} items={navItems} className="header-menu" onClick={onNavMenuClick} />
-            <Select defaultValue={selectedCommunity || '1'} popupClassName="community-name" style={{ width: 160, marginLeft: 600 }} options={communityOptions} onChange={onCommunityChange} />
-            <Button type="primary" className="publish-btn" onClick={() => setIsShowDetail(true)}>
-                发布帖子
-            </Button>
-            <Modal open={isShowPublish} onCancel={() => setIsShowDetail(false)} footer={null} width={700}>
-                <PublishModal
-                    handleCancel={() => setIsShowDetail(false)}
-                    handleRefresh={handleRefresh}
-                />
-            </Modal>
-            <Popover content={renderPopoverContent()} style={{ width: 300 }} open={showPopover} onOpenChange={openPopover} trigger="hover">
-                <div className="user-wrapper">
-                    <Avatar className="tab-user-avatar" icon={<UserOutlined />} src={userState.picture} />
-                    <div className="user-name">{userState.username}</div>
-                </div>
-            </Popover>
+            <Menu theme="dark" mode="horizontal" selectedKeys={selectedNav} defaultSelectedKeys={['/home']} items={navItems} className="header-menu" onClick={onNavMenuClick} />
+            <div className='header-right-wrapper'>
+                <Select defaultValue={selectedCommunity || '1'} popupClassName="community-name" style={{ width: 160, marginLeft: 600 }} options={communityOptions} onChange={onCommunityChange} />
+                <Button type="primary" className="publish-btn" onClick={() => setIsShowDetail(true)}>
+                    发布帖子
+                </Button>
+                <Modal open={isShowPublish} onCancel={() => setIsShowDetail(false)} footer={null} width={700}>
+                    <PublishModal handleCancel={() => setIsShowDetail(false)} handleRefresh={handleRefresh} />
+                </Modal>
+                <Popover content={renderPopoverContent()} style={{ width: 300 }} open={showPopover} onOpenChange={openPopover} trigger="hover">
+                    <div className="user-wrapper">
+                        <Avatar className="tab-user-avatar" icon={<UserOutlined />} src={userState.picture || 'https://tongxinshequ.cn/87601e9b1a734c9f9f17803d87074218.jpg'} />
+                        <div className="user-name">{userState.username}</div>
+                    </div>
+                </Popover>
+            </div>
         </Header>
     );
 };
