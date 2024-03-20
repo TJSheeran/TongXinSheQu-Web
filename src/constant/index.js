@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { CoffeeOutlined, CustomerServiceOutlined, LaptopOutlined, FlagOutlined, PayCircleOutlined, TeamOutlined, TagsOutlined } from '@ant-design/icons';
+import { CoffeeOutlined, CustomerServiceOutlined, LaptopOutlined, FlagOutlined, PayCircleOutlined, TeamOutlined, TagsOutlined, CommentOutlined } from '@ant-design/icons';
 
 export const navItems = [
     {
@@ -19,6 +19,10 @@ export const navItems = [
         key: '/personal',
         label: '个人主页',
         disabled: true
+    },
+    {
+        key: '/discuss',
+        label: '吐槽',
     }
 ];
 
@@ -207,7 +211,12 @@ export const catalogList = [
         key: '7',
         icon: React.createElement(TeamOutlined),
         label: '组队'
-    }
+    },
+    // {
+    //     key: '8',
+    //     icon: React.createElement(CommentOutlined),
+    //     label: '吐槽'
+    // }
 ];
 
 export const catalogKey2Label = {
@@ -217,5 +226,6 @@ export const catalogKey2Label = {
     4: '美食',
     5: '休闲',
     6: '二手',
-    7: '组队'
+    7: '组队',
+    // 8: '吐槽'
 };

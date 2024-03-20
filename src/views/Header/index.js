@@ -20,6 +20,7 @@ const CommonHeader = ({ handleRefresh }) => {
     const dispatch = useDispatch();
     const [isShowPublish, setIsShowDetail] = useState(false);
     const [showPopover, setShowPopover] = useState(false);
+    console.log(selectedNav);
 
     const closePopover = () => {
         setShowPopover(false);
@@ -32,6 +33,7 @@ const CommonHeader = ({ handleRefresh }) => {
     const onNavMenuClick = (e) => {
         dispatch(changeNavItem(e.key));
         navigate(e.key);
+        console.log(e.key)
     };
 
     const onCommunityChange = (value) => {
@@ -49,7 +51,7 @@ const CommonHeader = ({ handleRefresh }) => {
                 alignItems: 'center'
             }}
         >
-            <Menu theme="dark" mode="horizontal" selectedKeys={selectedNav} defaultSelectedKeys={['/home']} items={navItems} className="header-menu" onClick={onNavMenuClick} />
+            <Menu theme="dark" mode="horizontal" selectedKeys={selectedNav} items={navItems} className="header-menu" onClick={onNavMenuClick} />
             <Select defaultValue={selectedCommunity || '1'} popupClassName="community-name" style={{ width: 160, marginLeft: 600 }} options={communityOptions} onChange={onCommunityChange} />
             <Button type="primary" className="publish-btn" onClick={() => setIsShowDetail(true)}>
                 发布帖子

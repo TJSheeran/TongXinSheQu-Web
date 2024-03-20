@@ -5,6 +5,7 @@ const Home = lazy(() => import("@/views/Home/index"));
 const Recommend = lazy(() => import("@/views/Recommend/index"));
 const Login = lazy(() => import("@/views/Login/index"));
 const Detail = lazy(() => import("@/views/Detail/index"));
+const Discuss = lazy(() => import("@/views/Discuss/index"));
 
 const routes = [
 	{
@@ -27,6 +28,10 @@ const routes = [
 		path: "/detail",
 		element: <Detail />,
 	},
+	{
+		path:"/discuss",
+		element:<Discuss />
+	}
 ];
 
 export default routes;
