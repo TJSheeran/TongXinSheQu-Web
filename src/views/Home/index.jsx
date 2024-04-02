@@ -7,9 +7,10 @@ import { CaixiList } from './components/CaixiList';
 import store from '@/store';
 import { useSelector } from 'react-redux';
 import CommonHeader from '../Header';
+import { getList } from '@/services/utils/api';
+import FeedbackModal from '../FeedbackModal';
 
 import './style.less';
-import { getList } from '@/services/utils/api';
 
 const { Header, Content, Sider } = Layout;
 
@@ -21,6 +22,7 @@ const Home = memo(() => {
     const [listData, setListData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [isRefresh, setIsRefresh] = useState(false);
+    const [isShowFeedback, setIsShowFeedback] = useState(false);
 
     useEffect(() => {
         async function fetchListData() {
@@ -99,7 +101,11 @@ const Home = memo(() => {
                         </Card>
                     </Content>
                 </Layout>
+                <FloatButton onClick={() => setIsShowFeedback(true)} tooltip="问题反馈"/>;
                 <FloatButton.BackTop tooltip="返回顶部" />
+                <Modal open={isShowFeedback} onCancel={() => setIsShowFeedback(false)} footer={null} width={550}>
+                    <FeedbackModal />
+                </Modal>
             </Layout>
         </Layout>
     );
