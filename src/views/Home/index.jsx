@@ -60,6 +60,7 @@ const Home = memo(() => {
                 handleRefresh={() => {
                     setIsRefresh(!isRefresh);
                 }}
+                selectedNav='/home'
             />
             <Layout>
                 <Sider

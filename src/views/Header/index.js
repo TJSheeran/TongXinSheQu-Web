@@ -13,14 +13,13 @@ import './index.less';
 
 const { Header } = Layout;
 
-const CommonHeader = ({ handleRefresh }) => {
+const CommonHeader = ({ handleRefresh, selectedNav }) => {
     const navigate = useNavigate();
     const userState = useSelector((state) => state.login.user);
-    const { selectedNav, selectedCommunity } = useSelector((state) => state.header);
+    const { selectedCommunity } = useSelector((state) => state.header);
     const dispatch = useDispatch();
     const [isShowPublish, setIsShowDetail] = useState(false);
     const [showPopover, setShowPopover] = useState(false);
-    console.log(selectedNav);
 
     const closePopover = () => {
         setShowPopover(false);
@@ -31,7 +30,6 @@ const CommonHeader = ({ handleRefresh }) => {
     };
 
     const onNavMenuClick = (e) => {
-        dispatch(changeNavItem(e.key));
         navigate(e.key);
         console.log(e.key)
     };

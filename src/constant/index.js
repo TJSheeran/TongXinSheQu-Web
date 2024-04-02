@@ -11,6 +11,10 @@ export const navItems = [
         label: '推荐'
     },
     {
+        key: '/discuss',
+        label: '吐槽'
+    },
+    {
         key: '/message',
         label: '消息',
         disabled: true
@@ -19,10 +23,6 @@ export const navItems = [
         key: '/personal',
         label: '个人主页',
         disabled: true
-    },
-    {
-        key: '/discuss',
-        label: '吐槽',
     }
 ];
 
@@ -211,7 +211,7 @@ export const catalogList = [
         key: '7',
         icon: React.createElement(TeamOutlined),
         label: '组队'
-    },
+    }
     // {
     //     key: '8',
     //     icon: React.createElement(CommentOutlined),
@@ -226,6 +226,6 @@ export const catalogKey2Label = {
     4: '美食',
     5: '休闲',
     6: '二手',
-    7: '组队',
+    7: '组队'
     // 8: '吐槽'
 };

@@ -38,7 +38,8 @@ const Discuss = ()=>{
             <CommonHeader
                 handleRefresh={()=>{
                     setIsRefresh(!isRefresh)
-                }} />
+                }}
+                selectedNav='/discuss' />
             <div className='box'>
             <Card className = "discuss-card-wrapper">
                 <div className='d-header'>

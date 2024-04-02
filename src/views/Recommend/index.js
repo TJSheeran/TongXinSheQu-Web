@@ -45,6 +45,7 @@ const Recommend = () => {
                 handleRefresh={() => {
                     setIsRefresh(!isRefresh);
                 }}
+                selectedNav='/recommend'
             />
             <Card className="detail-card-wrapper">
                 <div className="r-header">猜你喜欢</div>
