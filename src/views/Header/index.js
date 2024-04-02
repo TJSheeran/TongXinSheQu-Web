@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Layout, Menu, Select, Button, Modal, Avatar, Popover } from 'antd';
+import { Layout, Menu, Select, Button, Modal, Avatar, Popover, Input } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import store from '@/store';
 import { changeNavItem, changeCommunity } from '@/store/header';
@@ -12,6 +12,7 @@ import PopoverContent from './components/PopoverContent';
 import './index.less';
 
 const { Header } = Layout;
+const { Search } = Input;
 
 const CommonHeader = ({ handleRefresh, selectedNav }) => {
     const navigate = useNavigate();
@@ -42,6 +43,16 @@ const CommonHeader = ({ handleRefresh, selectedNav }) => {
         return <PopoverContent closePopover={closePopover} />;
     };
 
+    const onSearch = () => {
+        console.log('search');
+    }
+
+    const renderAddonBefore = () => {
+        return (
+            <Select defaultValue={selectedCommunity || '1'} popupClassName="community-name" className='change-community-btn' options={communityOptions} onChange={onCommunityChange} />
+        );
+    }
+
     return (
         <Header
             style={{
@@ -51,7 +62,8 @@ const CommonHeader = ({ handleRefresh, selectedNav }) => {
         >
             <Menu theme="dark" mode="horizontal" selectedKeys={selectedNav} defaultSelectedKeys={['/home']} items={navItems} className="header-menu" onClick={onNavMenuClick} />
             <div className='header-right-wrapper'>
-                <Select defaultValue={selectedCommunity || '1'} popupClassName="community-name" style={{ width: 160, marginLeft: 600 }} options={communityOptions} onChange={onCommunityChange} />
+                <Search addonBefore={renderAddonBefore()} placeholder="寻找你想要的内容" allowClear enterButton size="large" onSearch={onSearch} style={{ width: 620 }} />
+                {/* <Select defaultValue={selectedCommunity || '1'} popupClassName="community-name" style={{ width: 160, marginLeft: 80 }} options={communityOptions} onChange={onCommunityChange} /> */}
                 <Button type="primary" className="publish-btn" onClick={() => setIsShowDetail(true)}>
                     发布帖子
                 </Button>
@@ -61,7 +73,7 @@ const CommonHeader = ({ handleRefresh, selectedNav }) => {
                 <Popover content={renderPopoverContent()} style={{ width: 300 }} open={showPopover} onOpenChange={openPopover} trigger="hover">
                     <div className="user-wrapper">
                         <Avatar className="tab-user-avatar" icon={<UserOutlined />} src={userState.picture || 'https://tongxinshequ.cn/87601e9b1a734c9f9f17803d87074218.jpg'} />
-                        <div className="user-name">{userState.username}</div>
+                        {/* <div className="user-name">{userState.username}</div> */}
                     </div>
                 </Popover>
             </div>

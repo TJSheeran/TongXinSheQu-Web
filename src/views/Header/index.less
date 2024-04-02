@@ -4,11 +4,12 @@ header-menu {
 
 .header-right-wrapper {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
+    justify-content: flex-end;
+    margin-left: 50px;
 
     .publish-btn {
-        margin-left: 1%;
+        margin-left: 20%;
     }
 
     .community-name {
@@ -17,8 +18,13 @@ header-menu {
     }
 
     .change-community-btn {
-        margin-left: 1%;
-        color: #87d068;
+        height: 100%;
+        background-color: white;
+        // color: #87d068;
+        // color: white;
+        width: 160px;
+        height: 38px;
+        border-radius: 10px;
     }
 
     .user-wrapper {
@@ -27,6 +33,8 @@ header-menu {
         justify-content: space-between;
         align-items: center;
         cursor: pointer;
+        margin-right: -15%;
+        margin-left: -5%;
 
         .tab-user-avatar {
             // style={{ backgroundColor: '#87d068' }}
@@ -34,16 +42,6 @@ header-menu {
             width: 42px;
             height: 42px;
             display: block;
-        }
-
-        .user-name {
-            color: aliceblue;
-            cursor: pointer;
-            font-size: 16px;
-            margin-left: 20px;
-            height: 42px;
-            display: flex;
-            align-items: center;
         }
     }
 }

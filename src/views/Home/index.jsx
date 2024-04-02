@@ -102,7 +102,7 @@ const Home = memo(() => {
                         </Card>
                     </Content>
                 </Layout>
-                <FloatButton onClick={() => setIsShowFeedback(true)} tooltip="问题反馈"/>;
+                <FloatButton onClick={() => setIsShowFeedback(true)} tooltip="问题反馈"/>
                 <FloatButton.BackTop tooltip="返回顶部" />
                 <Modal open={isShowFeedback} onCancel={() => setIsShowFeedback(false)} footer={null} width={550}>
                     <FeedbackModal />
