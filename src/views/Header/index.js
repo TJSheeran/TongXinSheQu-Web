@@ -20,6 +20,7 @@ const CommonHeader = ({ handleRefresh }) => {
     const dispatch = useDispatch();
     const [isShowPublish, setIsShowDetail] = useState(false);
     const [showPopover, setShowPopover] = useState(false);
+    console.log(selectedNav);
 
     const closePopover = () => {
         setShowPopover(false);
@@ -32,6 +33,7 @@ const CommonHeader = ({ handleRefresh }) => {
     const onNavMenuClick = (e) => {
         dispatch(changeNavItem(e.key));
         navigate(e.key);
+        console.log(e.key)
     };
 
     const onCommunityChange = (value) => {

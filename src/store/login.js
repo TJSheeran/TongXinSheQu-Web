@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { userLogin } from '@/services/utils/api';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 export const fetchUserLogin = createAsyncThunk('fetchUserLogin', async (payload) => {
     const res = await userLogin(payload);
