@@ -1,4 +1,5 @@
-import { Card, Avatar, Button, Spin, FloatButton } from 'antd';
+import { Card, Avatar, Button, Spin, FloatButton, Modal } from 'antd';
+import { QuestionCircleOutlined } from '@ant-design/icons';
 import React, { memo, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getRecommend } from '../../services/utils/api';
@@ -7,6 +8,7 @@ import CommonHeader from '@/views/Header';
 import { latAndLong } from '@/constant';
 import store from '@/store';
 import { useSelector } from 'react-redux';
+import FeedbackModal from '../FeedbackModal';
 
 import './index.less';
 
@@ -17,6 +19,7 @@ const Recommend = () => {
     const [loading, setLoading] = useState(false);
     const [recommendInfo, setRecommendInfo] = useState([]);
     const [isRefresh, setIsRefresh] = useState(false);
+    const [isShowFeedback, setIsShowFeedback] = useState(false);
 
     useEffect(() => {
         async function fetchRecommend() {
@@ -45,7 +48,7 @@ const Recommend = () => {
                 handleRefresh={() => {
                     setIsRefresh(!isRefresh);
                 }}
-                selectedNav='/recommend'
+                selectedNav="/recommend"
             />
             <Card className="detail-card-wrapper">
                 <div className="r-header">猜你喜欢</div>
@@ -59,7 +62,11 @@ const Recommend = () => {
                     <RecommendList jumpToDetail={jumpToDetail} recommendInfo={recommendInfo} />
                 )}
             </Card>
-            <FloatButton.BackTop tooltip='返回顶部' />
+            <FloatButton icon={<QuestionCircleOutlined />} onClick={() => setIsShowFeedback(true)} tooltip="问题反馈" />
+            <FloatButton.BackTop tooltip="返回顶部" />
+            <Modal open={isShowFeedback} onCancel={() => setIsShowFeedback(false)} footer={null} width={550}>
+                <FeedbackModal onCancel={() => setIsShowFeedback(false)} />
+            </Modal>
         </div>
     );
 };

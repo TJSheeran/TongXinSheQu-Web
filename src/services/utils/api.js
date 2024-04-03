@@ -87,4 +87,8 @@ export async function fetchDeleteFollow(params) {
     return post('https://tongxinshequ.cn/delectfollow', params);
 }
 
+export async function fetchFeedback(params) {
+    return post('https://tongxinshequ.cn/advice/postAdvice', params);
+}
+
 

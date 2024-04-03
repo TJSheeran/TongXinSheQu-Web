@@ -62,7 +62,7 @@ const CommonHeader = ({ handleRefresh, selectedNav }) => {
         >
             <Menu theme="dark" mode="horizontal" selectedKeys={selectedNav} defaultSelectedKeys={['/home']} items={navItems} className="header-menu" onClick={onNavMenuClick} />
             <div className='header-right-wrapper'>
-                <Search addonBefore={renderAddonBefore()} placeholder="寻找你想要的内容" allowClear enterButton size="large" onSearch={onSearch} style={{ width: 620 }} />
+                <Search addonBefore={renderAddonBefore()} placeholder="寻找你想要的内容" allowClear enterButton size="middle" onSearch={onSearch} style={{ width: 620 }} />
                 {/* <Select defaultValue={selectedCommunity || '1'} popupClassName="community-name" style={{ width: 160, marginLeft: 80 }} options={communityOptions} onChange={onCommunityChange} /> */}
                 <Button type="primary" className="publish-btn" onClick={() => setIsShowDetail(true)}>
                     发布帖子

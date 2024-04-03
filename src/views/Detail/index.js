@@ -1,5 +1,5 @@
 import { Card, Avatar, Divider, Button, FloatButton, Modal, message } from 'antd';
-import { CommentOutlined, EditOutlined, PlusOutlined, HeartFilled, HeartOutlined, StarFilled, StarOutlined } from '@ant-design/icons';
+import { CommentOutlined, EditOutlined, PlusOutlined, HeartFilled, HeartOutlined, StarFilled, StarOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import React, { memo, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AnswerList } from './components/AnswerList';
@@ -8,6 +8,7 @@ import { getDetail, fetchAddLike, fetchDeleteLike, fetchAddCollect, fetchDeleteC
 import { useSelector } from 'react-redux';
 import store from '@/store';
 import AnswerModal from './components/AnswerModal';
+import FeedbackModal from '../FeedbackModal';
 
 import './index.less';
 
@@ -27,6 +28,7 @@ const Detail = memo(() => {
     const [AIInfo, setAIInfo] = useState('');
     const [isShowAnswerModal, setIsShowAnswerModal] = useState(false);
     const [isRefresh, setIsRefresh] = useState(false);
+    const [isShowFeedback, setIsShowFeedback] = useState(false);
 
     useEffect(() => {
         async function fetchDetail() {
@@ -194,8 +196,12 @@ const Detail = memo(() => {
                 <FloatButton onClick={isLiked ? handleDeleteLike : handleAddLike} icon={isLiked ? <HeartFilled style={{ color: '#ec5b56' }} /> : <HeartOutlined />} tooltip={<div>{isLiked ? '已喜欢' : '喜欢'}</div>} badge={{ count: likeNum }} />
                 <FloatButton onClick={isCollected ? handleDeleteCollect : handleAddCollect} icon={isCollected ? <StarFilled style={{ color: '#fcd732' }} /> : <StarOutlined />} tooltip={<div>{isCollected ? '已收藏' : '收藏'}</div>} />
                 <FloatButton icon={<EditOutlined />} tooltip={<div>添加回答</div>} onClick={() => setIsShowAnswerModal(true)} />
+                <FloatButton icon={<QuestionCircleOutlined />} onClick={() => setIsShowFeedback(true)} tooltip="问题反馈" />
                 <FloatButton.BackTop tooltip="返回顶部" />
             </FloatButton.Group>
+            <Modal open={isShowFeedback} onCancel={() => setIsShowFeedback(false)} footer={null} width={550}>
+                <FeedbackModal onCancel={() => setIsShowFeedback(false)} />
+            </Modal>
         </div>
     );
 });
