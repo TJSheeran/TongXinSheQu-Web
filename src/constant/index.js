@@ -232,11 +232,11 @@ export const userPageItem = [
     },
     {
         key: '1',
-        label: '我的关注'
+        label: '我的发布'
     },
     {
         key: '2',
-        label: '我的发布'
+        label: '我的关注'
     },
     {
         key: '3',

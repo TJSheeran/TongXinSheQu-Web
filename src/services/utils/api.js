@@ -91,4 +91,10 @@ export async function fetchFeedback(params) {
     return post('https://tongxinshequ.cn/advice/postAdvice', params);
 }
 
+export async function getMyPublish(params) {
+    return get('https://tongxinshequ.cn/getMyBaike/3', params);
+}
 
+export async function getMyFocus(params) {
+    return get('https://tongxinshequ.cn/myfollow/131', params);
+}
