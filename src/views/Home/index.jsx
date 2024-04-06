@@ -32,6 +32,7 @@ const Home = memo(() => {
                 category1: catalogKey2Label[catalog],
                 campus: latAndLong[selectedCommunity]
             };
+            console.log(666, params);
             const result = await getList(params);
             if (result) {
                 setListData(result);

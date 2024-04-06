@@ -15,14 +15,8 @@ export const navItems = [
         label: '吐槽'
     },
     {
-        key: '/message',
-        label: '消息',
-        disabled: true
-    },
-    {
-        key: '/personal',
-        label: '个人主页',
-        disabled: true
+        key: '/userpage',
+        label: '个人主页'
     }
 ];
 
@@ -229,3 +223,24 @@ export const catalogKey2Label = {
     7: '组队'
     // 8: '吐槽'
 };
+
+export const userPageItem = [
+    {
+        key: '0',
+        label: '修改个人信息',
+        disabled: true
+    },
+    {
+        key: '1',
+        label: '我的关注'
+    },
+    {
+        key: '2',
+        label: '我的发布'
+    },
+    {
+        key: '3',
+        label: '我的回答',
+        disabled: true
+    }
+];

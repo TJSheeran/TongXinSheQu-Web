@@ -5,7 +5,8 @@ import Login from '@/views/Login';
 import Recommend from '@/views/Recommend';
 import Detail from '@/views/Detail';
 import Register from '@/views/Register';
-import Discuss from './views/Discuss';
+import Discuss from '@/views/Discuss';
+import UserPage from '@/views/UserPage';
 
 // import routes from "@/router";
 // import { useRoutes } from "react-router-dom";
@@ -22,7 +23,8 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/recommend" element={<Recommend />} />
             <Route path="/detail" element={<Detail />} />
-            <Route path='/discuss' element={<Discuss />} />
+            <Route path="/discuss" element={<Discuss />} />
+            <Route path="/userpage" element={<UserPage />} />
         </Routes>
     );
 };

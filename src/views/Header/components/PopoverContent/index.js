@@ -42,7 +42,7 @@ const PopoverContent = ({ closePopover }) => {
             </div>
             <div className="popover-content-username-wrapper">{userState.username}</div>
             <div className="popover-content-handler-wrapper">
-                <Button disabled type="text" className="popover-content-handler">
+                <Button type="text" className="popover-content-handler" onClick={() => navigate('/userpage')}>
                     个人主页
                 </Button>
                 <Button type="text" className="popover-content-handler" onClick={openDrawer}>
