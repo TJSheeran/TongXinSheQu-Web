@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Layout, Menu, Select, Button, Modal, Avatar, Popover, Input } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import store from '@/store';
-import { changeNavItem, changeCommunity } from '@/store/header';
+import { changeNavItem, changeCommunity, changeSearchKey } from '@/store/header';
 import { useSelector, useDispatch } from 'react-redux';
 import { navItems, latAndLong, communityOptions } from '@/constant';
 import PublishModal from './components/PublishModal';
@@ -14,7 +14,7 @@ import './index.less';
 const { Header } = Layout;
 const { Search } = Input;
 
-const CommonHeader = ({ handleRefresh, selectedNav, isUserPage }) => {
+const CommonHeader = ({ handleRefresh, selectedNav, isUserPage, fetchListData, category1 }) => {
     const navigate = useNavigate();
     const userState = useSelector((state) => state.login.user);
     const { selectedCommunity } = useSelector((state) => state.header);
@@ -43,8 +43,15 @@ const CommonHeader = ({ handleRefresh, selectedNav, isUserPage }) => {
         return <PopoverContent closePopover={closePopover} />;
     };
 
-    const onSearch = () => {
-        console.log('search');
+    const onSearch = (value, _e, info) => {
+        // console.log(info?.source, value);
+        dispatch(changeSearchKey(value));
+        const params = {
+            searchKey: value,
+            category1: category1,
+            campus: latAndLong[selectedCommunity]
+        };
+        fetchListData(params);
     };
 
     const renderAddonBefore = () => {

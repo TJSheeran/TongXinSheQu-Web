@@ -18,7 +18,7 @@ const { Header, Content, Sider } = Layout;
 const Home = memo(() => {
     const navigate = useNavigate();
     const userState = useSelector((state) => state.login.user);
-    const { selectedCommunity } = useSelector((state) => state.header);
+    const { searchKey, selectedCommunity } = useSelector((state) => state.header);
     const [catalog, setCatalog] = useState('1');
     const [listData, setListData] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -26,23 +26,26 @@ const Home = memo(() => {
     const [isShowFeedback, setIsShowFeedback] = useState(false);
 
     useEffect(() => {
-        async function fetchListData() {
-            setLoading(true);
-            const params = {
-                category1: catalogKey2Label[catalog],
-                campus: latAndLong[selectedCommunity]
-            };
-            console.log(666, params);
-            const result = await getList(params);
-            if (result) {
-                setListData(result);
-                setLoading(false);
-            }
-            console.log('帖子列表', result);
-        }
-        fetchListData();
-        console.log('selectedCommunity', selectedCommunity);
+        fetchAllListData();
     }, [catalog, selectedCommunity, isRefresh]);
+
+    const fetchListData = async (params) => {
+        setLoading(true);
+        const result = await getList(params);
+        if (result) {
+            setListData(result);
+            setLoading(false);
+        }
+    };
+
+    const fetchAllListData = () => {
+        const params = {
+            searchKey: searchKey,
+            category1: catalogKey2Label[catalog],
+            campus: latAndLong[selectedCommunity]
+        };
+        fetchListData(params);
+    }
 
     const jumpToDetail = (info) => {
         navigate('/detail', { state: { info } });
@@ -63,6 +66,8 @@ const Home = memo(() => {
                     setIsRefresh(!isRefresh);
                 }}
                 selectedNav="/home"
+                fetchListData={fetchListData}
+                category1={catalogKey2Label[catalog]} 
             />
             <Layout>
                 <Sider

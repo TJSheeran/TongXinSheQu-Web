@@ -16,7 +16,7 @@ export class ContentList extends Component {
             </div>
         ) : (
             <div>
-                {listData.map((itemInfo) => {
+                {listData.length > 0 && listData.map((itemInfo) => {
                     return <ContentCard info={itemInfo} key={itemInfo.id} jumpToDetail={jumpToDetail} />;
                 })}
             </div>
