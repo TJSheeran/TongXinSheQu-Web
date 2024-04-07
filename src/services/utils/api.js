@@ -87,14 +87,19 @@ export async function fetchDeleteFollow(params) {
     return post('https://tongxinshequ.cn/delectfollow', params);
 }
 
+export async function fetchDeleteFollow2(params) {
+    return post('https://tongxinshequ.cn/delectfollow2', params);
+}
+
 export async function fetchFeedback(params) {
     return post('https://tongxinshequ.cn/advice/postAdvice', params);
 }
 
-export async function getMyPublish(params) {
-    return get('https://tongxinshequ.cn/getMyBaike/3', params);
+export async function getMyPublish(uid) {
+    return get(`https://tongxinshequ.cn/getMyBaike/${uid}`);
 }
 
-export async function getMyFocus(params) {
-    return get('https://tongxinshequ.cn/myfollow/131', params);
+export async function getMyFocus(uid) {
+    return get(`https://tongxinshequ.cn/myfollow/${uid}`);
 }
+

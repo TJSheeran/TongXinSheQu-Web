@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { getMyPublish } from '@/services/utils/api';
 import UserInfoPublishList from './UserInfoPublishList';
 
+import './index.less';
+
 const UserInfoPublish = () => {
     const navigate = useNavigate();
     const userState = useSelector((store) => store.login.user);
@@ -17,10 +19,10 @@ const UserInfoPublish = () => {
     useEffect(() => {
         async function fetchMyPublish() {
             setLoading(true);
-            const params = {
-                userid: userState.uid
-            };
-            const result = await getMyPublish(params);
+            // const params = {
+            //     userid: userState.uid
+            // };
+            const result = await getMyPublish(userState.uid);
             console.log('我的发布', result);
             if (result) {
                 setPublishList(result);
@@ -32,9 +34,10 @@ const UserInfoPublish = () => {
 
     return (
         <div>
+            <div className="publish-title">我发布的内容</div>
             <UserInfoPublishList jumpToDetail={jumpToDetail} publishList={publishList} loading={loading} />
         </div>
     );
-}
+};
 
 export default UserInfoPublish;

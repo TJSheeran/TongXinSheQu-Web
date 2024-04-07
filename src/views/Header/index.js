@@ -14,7 +14,7 @@ import './index.less';
 const { Header } = Layout;
 const { Search } = Input;
 
-const CommonHeader = ({ handleRefresh, selectedNav }) => {
+const CommonHeader = ({ handleRefresh, selectedNav, isUserPage }) => {
     const navigate = useNavigate();
     const userState = useSelector((state) => state.login.user);
     const { selectedCommunity } = useSelector((state) => state.header);
@@ -32,7 +32,7 @@ const CommonHeader = ({ handleRefresh, selectedNav }) => {
 
     const onNavMenuClick = (e) => {
         navigate(e.key);
-        console.log(e.key)
+        console.log(e.key);
     };
 
     const onCommunityChange = (value) => {
@@ -45,13 +45,11 @@ const CommonHeader = ({ handleRefresh, selectedNav }) => {
 
     const onSearch = () => {
         console.log('search');
-    }
+    };
 
     const renderAddonBefore = () => {
-        return (
-            <Select defaultValue={selectedCommunity || '1'} popupClassName="community-name" className='change-community-btn' options={communityOptions} onChange={onCommunityChange} />
-        );
-    }
+        return <Select defaultValue={selectedCommunity || '1'} popupClassName="community-name" className="change-community-btn" options={communityOptions} onChange={onCommunityChange} />;
+    };
 
     return (
         <Header
@@ -61,8 +59,8 @@ const CommonHeader = ({ handleRefresh, selectedNav }) => {
             }}
         >
             <Menu theme="dark" mode="horizontal" selectedKeys={selectedNav} defaultSelectedKeys={['/home']} items={navItems} className="header-menu" onClick={onNavMenuClick} />
-            <div className='header-right-wrapper'>
-                <Search addonBefore={renderAddonBefore()} placeholder="寻找你想要的内容" allowClear enterButton size="middle" onSearch={onSearch} style={{ width: 620 }} />
+            <div className="header-right-wrapper">
+                {isUserPage ? <div style={{ width: 620 }} /> : <Search addonBefore={renderAddonBefore()} placeholder="寻找你想要的内容" allowClear enterButton size="middle" onSearch={onSearch} style={{ width: 620 }} />}
                 {/* <Select defaultValue={selectedCommunity || '1'} popupClassName="community-name" style={{ width: 160, marginLeft: 80 }} options={communityOptions} onChange={onCommunityChange} /> */}
                 <Button type="primary" className="publish-btn" onClick={() => setIsShowDetail(true)}>
                     发布帖子

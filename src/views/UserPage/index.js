@@ -23,6 +23,7 @@ export default function UserPage({ onCancel }) {
                     console.log('用户主页刷新');
                 }}
                 selectedNav="/userpage"
+                isUserPage={true}
             />
             <Layout>
                 <Sider
