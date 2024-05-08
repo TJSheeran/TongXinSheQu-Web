@@ -17,7 +17,7 @@ const App = () => {
     const isAuthenticated = token && token !== 'undefined' ? true : false;
     return (
         <Routes>
-            <Route path="/" element={isAuthenticated ? <Navigate to="/home" replace={true} /> : <Navigate to="/login" replace={true} />} />
+            <Route path="/" element={isAuthenticated ? <Navigate to="/recommend" replace={true} /> : <Navigate to="/login" replace={true} />} />
             <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

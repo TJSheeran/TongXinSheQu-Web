@@ -3,16 +3,16 @@ import { CoffeeOutlined, CustomerServiceOutlined, LaptopOutlined, FlagOutlined, 
 
 export const navItems = [
     {
-        key: '/home',
-        label: '首页'
-    },
-    {
         key: '/recommend',
         label: '推荐'
     },
     {
         key: '/discuss',
         label: '吐槽'
+    },
+    {
+        key: '/home',
+        label: '百科'
     },
     {
         key: '/userpage',
@@ -171,41 +171,41 @@ export const communityOptions = [
 // ]
 
 export const catalogList = [
+    // {
+    //     key: '3',
+    //     icon: React.createElement(TagsOutlined),
+    //     label: `团购`
+    // },
     {
         key: '1',
-        icon: React.createElement(LaptopOutlined),
-        label: `社区服务`
-    },
-    {
-        key: '2',
-        icon: React.createElement(FlagOutlined),
-        label: '交通出行'
-    },
-    {
-        key: '3',
-        icon: React.createElement(TagsOutlined),
-        label: `团购`
-    },
-    {
-        key: '4',
         icon: React.createElement(CoffeeOutlined),
         label: `美食`
     },
     {
-        key: '5',
+        key: '2',
         icon: React.createElement(CustomerServiceOutlined),
         label: '休闲'
     },
     {
-        key: '6',
+        key: '3',
         icon: React.createElement(PayCircleOutlined),
         label: '二手'
     },
     {
-        key: '7',
-        icon: React.createElement(TeamOutlined),
-        label: '组队'
+        key: '4',
+        icon: React.createElement(LaptopOutlined),
+        label: `社区服务`
+    },
+    {
+        key: '5',
+        icon: React.createElement(FlagOutlined),
+        label: '交通出行'
     }
+    // {
+    //     key: '7',
+    //     icon: React.createElement(TeamOutlined),
+    //     label: '组队'
+    // },
     // {
     //     key: '8',
     //     icon: React.createElement(CommentOutlined),
