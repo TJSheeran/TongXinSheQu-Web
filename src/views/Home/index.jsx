@@ -50,6 +50,7 @@ const Home = memo(() => {
     const jumpToDetail = (info) => {
         navigate('/detail', { state: { info } });
     };
+    
     const onMenuClick = (e) => {
         console.log('catalog', catalog);
         setCatalog(e.key);

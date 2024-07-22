@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import LoginReducer from './login';
 import HeaderReducer from './header';
+import TabReducer from './tab';
 
 const store = configureStore({
     reducer: {
         login: LoginReducer,
-        header: HeaderReducer
+        header: HeaderReducer,
+        tab: TabReducer
     }
 });
 
