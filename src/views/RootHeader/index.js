@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SearchBar, Picker } from 'antd-mobile';
 import { changeNavItem, changeCommunity, changeSearchKey } from '@/store/header';
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,6 +10,15 @@ export default function RootHeader() {
     const dispatch = useDispatch();
     const [visible, setVisible] = useState(false);
     const [campus, setCampus] = useState('1');
+    const [searchKey, setSearchKey] = useState('');
+
+    const handleSearch = (value) => {
+        dispatch(changeSearchKey(value));
+    };
+
+    const handleClear = () => {
+        dispatch(changeSearchKey(''));
+    };
 
     const onCommunityChange = (value) => {
         dispatch(changeCommunity(value));
@@ -46,6 +55,9 @@ export default function RootHeader() {
                     '--padding-left': '12px'
                 }}
                 className="search-wrapper"
+                onChange={(value) => setSearchKey(value)}
+                onSearch={handleSearch}
+                onClear={handleClear}
             />
             <Picker
                 columns={basicColumns}
