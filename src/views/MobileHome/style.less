@@ -1,3 +1,7 @@
+html {
+    touch-action: manipulation;
+}
+
 .home-page-wrapper {
     height: 100vh;
     display: flex;
@@ -15,6 +19,19 @@
     .home-page-body {
         margin-top: 15vw;
         flex: 1;
+
+        .home-page-body-nav {
+            width: 20%;
+            height: 100vh;
+            position: fixed;
+            z-index: 200;
+            top: 15vw;
+            left: 0;
+        }
+
+        .home-page-body-list {
+            padding-left: 20%;
+        }
     }
 
     .home-page-bottom {
@@ -27,4 +44,12 @@
 }
 
 .adm-tabs-tab-list {
+}
+
+.adm-side-bar-item-highlight {
+    display: none;
+}
+
+.adm-side-bar-item-active {
+    color: #65b687;
 }

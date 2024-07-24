@@ -1,8 +1,14 @@
+html {
+    touch-action: manipulation;
+}
+
 .recommend-page-wrapper {
     height: 100vh;
     display: flex;
     flex-direction: column;
     position: relative;
+    touch-action: none;
+    pointer-events: auto;
 
     .recommend-page-top {
         position: fixed;

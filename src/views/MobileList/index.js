@@ -10,11 +10,12 @@ import './style.less';
 import ListItem from './components/ListItem';
 import { Button } from 'antd';
 
-export default function MobileList() {
+export default function MobileList(props) {
+    const { category } = props;
     const navigate = useNavigate();
     const userState = useSelector((state) => state.login.user);
     const { searchKey, selectedCommunity } = useSelector((state) => state.header);
-    const [catalog, setCatalog] = useState('1');
+    // const [catalog, setCatalog] = useState('1');
     const [listData, setListData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [isRefresh, setIsRefresh] = useState(false);
@@ -23,7 +24,7 @@ export default function MobileList() {
     useEffect(() => {
         fetchAllListData();
         console.log(listData);
-    }, [catalog, selectedCommunity, isRefresh, searchKey]);
+    }, [category, selectedCommunity, isRefresh, searchKey]);
 
     const fetchListData = async (params) => {
         setLoading(true);
@@ -38,7 +39,7 @@ export default function MobileList() {
     const fetchAllListData = () => {
         const params = {
             searchKey: searchKey,
-            category1: catalogKey2Label[catalog],
+            category1: category,
             campus: latAndLong[selectedCommunity]
         };
         fetchListData(params);
@@ -47,7 +48,7 @@ export default function MobileList() {
     return loading ? (
         <SpinLoading color="primary" className="loading" />
     ) : (
-        <List>
+        <List className="mobile-list-body">
             {listData.length > 0 &&
                 listData.map((item, index) => {
                     return (

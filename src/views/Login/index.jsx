@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { fetchUserLogin } from '@/store/login';
+import { isMobile } from '@/utils';
 import './style.less';
 import store from '@/store';
 
@@ -43,7 +44,7 @@ const Login = memo(() => {
             .then((data) => {
                 if (data.info === '登录成功') {
                     message.success('登录成功');
-                    navigate('/recommend', { replace: true });
+                    navigate(isMobile() ? '/mobileHome' : '/recommend', { replace: true });
                 } else {
                     message.error(data.info);
                 }
