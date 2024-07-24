@@ -10,6 +10,8 @@ import Discuss from '@/views/Discuss';
 import UserPage from '@/views/UserPage';
 import { isMobile } from '@/utils';
 import MobileDetail from '@/views/MobileDetail';
+import MobileMyPage from '@/views/MobileMyPage';
+import MobileRecommend from '@/views/MobileRecommend';
 
 // import routes from "@/router";
 // import { useRoutes } from "react-router-dom";
@@ -24,6 +26,9 @@ const App = () => {
             <Route path="/mobileHome" element={<MobileHome />} />
             <Route path="/login" element={<Login />} />
             <Route path="/mobileDetail" element={<MobileDetail />} />
+            <Route path="/mobileUser" element={<MobileMyPage />} />
+            <Route path="/mobileUser" element={<MobileMyPage />} />
+            <Route path="/mobileRecommend" element={<MobileRecommend />} />
         </Routes>
     ) : (
         <Routes>

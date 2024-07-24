@@ -22,11 +22,6 @@ export default (props) => {
             icon: <UnorderedListOutline />
         },
         {
-            key: '/mobileMessage',
-            title: '消息',
-            icon: <MessageOutline />
-        },
-        {
             key: '/mobileUser',
             title: '我的',
             icon: <UserOutline />

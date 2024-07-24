@@ -1,0 +1,73 @@
+.user-page-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .user-page-top {
+        position: fixed;
+        top: 0;
+        z-index: 200;
+        width: 100%;
+        flex: 0;
+    }
+
+    .user-page-body {
+        margin-top: 15vw;
+        flex: 1;
+    }
+
+    .user-page-bottom {
+        position: fixed;
+        bottom: 0;
+        z-index: 200;
+        width: 100%;
+        background-color: #ffffff;
+    }
+
+    .user-page-content {
+        padding-top: 20vw;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        .user-page-avatar {
+            width: 25vw;
+            height: 25vw;
+            border-radius: 30vw;
+        }
+
+        .user-info-name {
+            width: 100vw;
+            // height: 20vw;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .user-info-sign {
+            font-size: 16px;
+            color: gray;
+        }
+
+        .user-exit-login-btn {
+            margin-top: 10vw;
+            width: 80vw;
+            height: 12vw;
+            border-radius: 12px;
+            background-color: #ec615c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+        }
+    }
+}

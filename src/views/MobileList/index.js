@@ -43,15 +43,17 @@ export default function MobileList() {
         };
         fetchListData(params);
     };
-    
+
     return (
         <List>
-            {listData ||
-                [].map((item, index) => (
-                    <List.Item key={index}>
-                        <ListItem info={item} />
-                    </List.Item>
-                ))}
+            {listData.length > 0 &&
+                listData.map((item, index) => {
+                    return (
+                        <List.Item key={index}>
+                            <ListItem info={item} />
+                        </List.Item>
+                    );
+                })}
         </List>
     );
 }
