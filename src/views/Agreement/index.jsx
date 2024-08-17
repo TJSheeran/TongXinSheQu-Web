@@ -335,9 +335,7 @@ const Agreement = memo(() => {
                 <span lang="EN-US" style={{ fontSize: '12.0pt', lineHeight: '120%', fontFamily: '宋体' }}>
                     4.{' '}
                 </span>
-                <span style={{ fontSize: '12.0pt', lineHeight: '120%', fontFamily: '宋体' }}>
-                    本协议最终解释权归所有，如有任何疑问，可以与客服联系，电话：<span lang="EN-US">&nbsp;&nbsp; </span>，邮箱：<span lang="EN-US">&nbsp;&nbsp; </span>。
-                </span>
+                <span style={{ fontSize: '12.0pt', lineHeight: '120%', fontFamily: '宋体' }}>本协议最终解释权归所有，如有任何疑问，可以与客服联系，电话：17317361204，邮箱：17317361204@163.com。</span>
             </p>
         </div>
     );
