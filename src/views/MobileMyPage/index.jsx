@@ -1,7 +1,6 @@
 import React from 'react';
 import { Modal } from 'antd-mobile';
 import RootTabBar from '../RootTabBar';
-import abc from './666';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
