@@ -10,14 +10,14 @@ import { useSelector } from 'react-redux';
 import CommonHeader from '../Header';
 import { getList } from '@/services/utils/api';
 import FeedbackModal from '../FeedbackModal';
-
+import CommonFooter from '../Footer';
 import './style.less';
 
-const { Header, Content, Sider } = Layout;
+const { Content, Sider } = Layout;
 
+// eslint-disable-next-line react/display-name
 const Home = memo(() => {
     const navigate = useNavigate();
-    const userState = useSelector((state) => state.login.user);
     const { searchKey, selectedCommunity } = useSelector((state) => state.header);
     const [catalog, setCatalog] = useState('1');
     const [listData, setListData] = useState([]);
@@ -45,12 +45,12 @@ const Home = memo(() => {
             campus: latAndLong[selectedCommunity]
         };
         fetchListData(params);
-    }
+    };
 
     const jumpToDetail = (info) => {
         navigate('/detail', { state: { info } });
     };
-    
+
     const onMenuClick = (e) => {
         console.log('catalog', catalog);
         setCatalog(e.key);
@@ -68,7 +68,7 @@ const Home = memo(() => {
                 }}
                 selectedNav="/home"
                 fetchListData={fetchListData}
-                category1={catalogKey2Label[catalog]} 
+                category1={catalogKey2Label[catalog]}
             />
             <Layout>
                 <Sider
@@ -116,6 +116,7 @@ const Home = memo(() => {
                     <FeedbackModal onCancel={() => setIsShowFeedback(false)} />
                 </Modal>
             </Layout>
+            <CommonFooter />
         </Layout>
     );
 });

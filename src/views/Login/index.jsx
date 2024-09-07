@@ -8,6 +8,7 @@ import { fetchUserLogin } from '@/store/login';
 import { isMobile } from '@/utils';
 import './style.less';
 import store from '@/store';
+import CommonFooter from '../Footer';
 
 const Login = memo(() => {
     const navigate = useNavigate();
@@ -56,47 +57,50 @@ const Login = memo(() => {
     };
 
     return (
-        <div className="wrap">
-            <div className="container">
-                <div className="title">登 录</div>
+        <div>
+            <div className="wrap">
+                <div className="container">
+                    <div className="title">登 录</div>
 
-                <Input className="input" size="middle" placeholder="账 号" prefix={<UserOutlined />} onChange={onAccountChange} />
+                    <Input className="input" size="middle" placeholder="账 号" prefix={<UserOutlined />} onChange={onAccountChange} />
 
-                <Input.Password className="input" size="middle" placeholder="密码" prefix={<LockOutlined />} onChange={onPasswordChange} />
+                    <Input.Password className="input" size="middle" placeholder="密码" prefix={<LockOutlined />} onChange={onPasswordChange} />
 
-                <Button type="primary" className="button" size="large" onClick={submitHandler} loading={loading}>
-                    登录
-                </Button>
-                <span>
-                    没有账号？
-                    <span
-                        className="register"
-                        onClick={() => {
-                            navigate('/register');
-                        }}
-                    >
-                        去注册
+                    <Button type="primary" className="button" size="large" onClick={submitHandler} loading={loading}>
+                        登录
+                    </Button>
+                    <span>
+                        没有账号？
+                        <span
+                            className="register"
+                            onClick={() => {
+                                navigate('/register');
+                            }}
+                        >
+                            去注册
+                        </span>
                     </span>
-                </span>
+                </div>
+                <div className="square">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div className="circle">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
             </div>
-            <div className="square">
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </div>
-            <div className="circle">
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </div>
+            <CommonFooter />
         </div>
     );
 });

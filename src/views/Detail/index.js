@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import store from '@/store';
 import AnswerModal from './components/AnswerModal';
 import FeedbackModal from '../FeedbackModal';
-
+import CommonFooter from '../Footer';
 import './index.less';
 
 const Detail = memo(() => {
@@ -202,6 +202,7 @@ const Detail = memo(() => {
             <Modal open={isShowFeedback} onCancel={() => setIsShowFeedback(false)} footer={null} width={550}>
                 <FeedbackModal onCancel={() => setIsShowFeedback(false)} />
             </Modal>
+            <CommonFooter />
         </div>
     );
 });

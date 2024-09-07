@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import CommonHeader from '../Header';
 import UserInfoBlock from './UserInfoBlock';
 import UserInfoContent from './UserInfoContent';
-
+import CommonFooter from '../Footer';
 import './index.less';
 
 const { Content, Sider } = Layout;
@@ -58,6 +58,7 @@ export default function UserPage({ onCancel }) {
                     </Content>
                 </Layout>
             </Layout>
+            <CommonFooter />
         </div>
     );
 }

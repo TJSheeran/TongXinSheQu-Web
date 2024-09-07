@@ -6,6 +6,7 @@ import { getList } from '@/services/utils/api';
 import CommonHeader from '../Header';
 import { Card, FloatButton, Spin } from 'antd';
 import { RecommendList } from '../Recommend/components/RecommendList';
+import CommonFooter from '../Footer';
 import './style.less';
 const Discuss = () => {
     const navigate = useNavigate();
@@ -29,7 +30,7 @@ const Discuss = () => {
         }
         fetchDiscuss();
     }, [selectedCommunity, isRefresh]);
-    
+
     const jumpToDetail = (info) => {
         navigate('/detail', { state: { info } });
     };
@@ -58,6 +59,7 @@ const Discuss = () => {
                 </Card>
                 <FloatButton.BackTop tooltip="返回顶部" />
             </div>
+            <CommonFooter />
         </>
     );
 };

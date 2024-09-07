@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { fetchUserLogin } from '@/store/login';
 import store from '@/store';
-
+import CommonFooter from '../Footer';
 import './index.less';
 
 const Register = memo(() => {
@@ -43,36 +43,39 @@ const Register = memo(() => {
     };
 
     return (
-        <div className="wrap">
-            <div className="container">
-                <div className="title">注 册</div>
+        <div>
+            <div className="wrap">
+                <div className="container">
+                    <div className="title">注 册</div>
 
-                <Input className="input" size="middle" placeholder="账 号" prefix={<UserOutlined />} onChange={onAccountChange} />
+                    <Input className="input" size="middle" placeholder="账 号" prefix={<UserOutlined />} onChange={onAccountChange} />
 
-                <Input.Password className="input" size="middle" placeholder="密码" prefix={<LockOutlined />} onChange={onPasswordChange} />
+                    <Input.Password className="input" size="middle" placeholder="密码" prefix={<LockOutlined />} onChange={onPasswordChange} />
 
-                <Button type="primary" className="button" size="large" onClick={submitHandler} loading={loading}>
-                    注册
-                </Button>
+                    <Button type="primary" className="button" size="large" onClick={submitHandler} loading={loading}>
+                        注册
+                    </Button>
+                </div>
+                <div className="square">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div className="circle">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
             </div>
-            <div className="square">
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </div>
-            <div className="circle">
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </div>
+            <CommonFooter />
         </div>
     );
 });

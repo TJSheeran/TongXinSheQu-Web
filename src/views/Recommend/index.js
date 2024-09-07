@@ -9,7 +9,7 @@ import { latAndLong } from '@/constant';
 import store from '@/store';
 import { useSelector } from 'react-redux';
 import FeedbackModal from '../FeedbackModal';
-
+import CommonFooter from '../Footer';
 import './index.less';
 
 const Recommend = () => {
@@ -67,6 +67,7 @@ const Recommend = () => {
             <Modal open={isShowFeedback} onCancel={() => setIsShowFeedback(false)} footer={null} width={550}>
                 <FeedbackModal onCancel={() => setIsShowFeedback(false)} />
             </Modal>
+            <CommonFooter />
         </div>
     );
 };
