@@ -1,3 +1,4 @@
+// 导入所需的组件和图标
 import { Card, Avatar, Divider, Button, FloatButton, Modal, message } from 'antd';
 import { CommentOutlined, EditOutlined, PlusOutlined, HeartFilled, HeartOutlined, StarFilled, StarOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import React, { memo, useState, useEffect } from 'react';
@@ -12,11 +13,16 @@ import FeedbackModal from '../FeedbackModal';
 import CommonFooter from '../Footer';
 import './index.less';
 
+// 定义Detail组件
 const Detail = memo(() => {
+    // 获取路由状态
     const { state } = useLocation();
+    // 从Redux store中获取用户状态
     const userState = useSelector((store) => store.login.user);
     const { info } = state;
     const { id, baikeAuthorPic } = info;
+    
+    // 定义状态变量
     const [isFocused, setIsFocused] = useState(info.isFocused);
     const [loading, setLoading] = useState(false);
     const [detailInfo, setDetailInfo] = useState([]);
@@ -30,6 +36,7 @@ const Detail = memo(() => {
     const [isRefresh, setIsRefresh] = useState(false);
     const [isShowFeedback, setIsShowFeedback] = useState(false);
 
+    // 使用useEffect钩子获取详细信息
     useEffect(() => {
         async function fetchDetail() {
             setLoading(true);
@@ -53,6 +60,7 @@ const Detail = memo(() => {
         fetchDetail();
     }, [isRefresh, isLiked, isCollected, isFollowed]);
 
+    // 处理添加点赞
     const handleAddLike = async () => {
         const params = {
             userid: userState.uid,
@@ -68,6 +76,7 @@ const Detail = memo(() => {
         }
     };
 
+    // 处理取消点赞
     const handleDeleteLike = async () => {
         const params = {
             userid: userState.uid,
@@ -83,6 +92,7 @@ const Detail = memo(() => {
         }
     };
 
+    // 处理添加收藏
     const handleAddCollect = async () => {
         const params = {
             userid: userState.uid,
@@ -98,6 +108,7 @@ const Detail = memo(() => {
         }
     };
 
+    // 处理取消收藏
     const handleDeleteCollect = async () => {
         const params = {
             userid: userState.uid,
@@ -113,6 +124,7 @@ const Detail = memo(() => {
         }
     };
 
+    // 处理添加关注
     const handleAddFollow = async () => {
         const params = {
             userid: userState.uid,
@@ -128,6 +140,7 @@ const Detail = memo(() => {
         }
     };
 
+    // 处理取消关注
     const handleDeleteFollow = async () => {
         const params = {
             userid: userState.uid,
@@ -143,6 +156,7 @@ const Detail = memo(() => {
         }
     };
 
+    // 渲染关注按钮
     const renderFocusButton = () => {
         return (
             <div>
@@ -158,6 +172,8 @@ const Detail = memo(() => {
             </div>
         );
     };
+
+    // 渲染组件
     return (
         <div className="bg">
             <Card className="detail-card-wrapper">
